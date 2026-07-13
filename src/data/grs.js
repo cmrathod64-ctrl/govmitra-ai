@@ -6,7 +6,7 @@ const grs = [
     date: "01-07-2026",
     keywords: ["DA", "Salary", "Allowance"],
     summary: "Dearness Allowance increased for Maharashtra Government Employees.",
-    pdf: "#"
+    pdf: "/pdfs/sample.pdf"
   },
 
   {
@@ -16,7 +16,7 @@ const grs = [
     date: "10-06-2026",
     keywords: ["Teacher", "Transfer", "Education"],
     summary: "New transfer policy for government school teachers.",
-    pdf: "#"
+    pdf: "/pdfs/sample.pdf"
   },
 
   {
@@ -26,7 +26,7 @@ const grs = [
     date: "15-05-2026",
     keywords: ["Medical", "Health", "Reimbursement"],
     summary: "Updated medical reimbursement rules for employees.",
-    pdf: "#"
+    pdf: "/pdfs/sample.pdf"
   }
 ];
 

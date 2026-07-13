@@ -1,4 +1,5 @@
 import departments from "../data/departments";
+import grs from "../data/grs";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import DepartmentCard from "../components/DepartmentCard";
@@ -10,7 +11,37 @@ function Home() {
       <Navbar />
 
       <Hero />
+<section className="max-w-6xl mx-auto px-4 py-8">
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
 
+    <div className="bg-white rounded-xl shadow p-6 text-center">
+      <h3 className="text-3xl font-bold text-green-700">{grs.length}</h3>
+      <p className="text-gray-600">📄 Total GRs</p>
+    </div>
+
+    <div className="bg-white rounded-xl shadow p-6 text-center">
+      <h3 className="text-3xl font-bold text-blue-700">
+        {departments.length}
+      </h3>
+      <p className="text-gray-600">🏛️ Departments</p>
+    </div>
+
+    <div className="bg-white rounded-xl shadow p-6 text-center">
+      <h3 className="text-3xl font-bold text-purple-700">
+        {grs.length}
+      </h3>
+      <p className="text-gray-600">🤖 AI Summaries</p>
+    </div>
+
+    <div className="bg-white rounded-xl shadow p-6 text-center">
+      <h3 className="text-3xl font-bold text-orange-700">
+        Soon
+      </h3>
+      <p className="text-gray-600">👥 Users</p>
+    </div>
+
+  </div>
+</section>
       <section className="max-w-6xl mx-auto px-4 py-10">
         <h2 className="text-3xl font-bold mb-6">Departments</h2>
 
@@ -25,7 +56,43 @@ function Home() {
 </div>
           
       </section>
+<section className="max-w-6xl mx-auto px-4 py-10">
+  <h2 className="text-3xl font-bold mb-6 text-green-700">
+    📢 Latest Government Resolutions
+  </h2>
 
+  <div className="grid md:grid-cols-3 gap-6">
+    {grs.slice(0, 3).map((gr) => (
+      <div
+        key={gr.id}
+        className="bg-white rounded-xl shadow-lg p-5 hover:shadow-2xl transition"
+      >
+        <h3 className="text-xl font-bold mb-2">{gr.title}</h3>
+
+        <span className="inline-block bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
+          🏛️ {gr.department}
+        </span>
+
+        <span className="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm ml-2">
+          📅 {gr.date}
+        </span>
+
+        <p className="mt-4 text-gray-600">
+          {gr.summary}
+        </p>
+
+        <a
+          href={gr.pdf}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block mt-4 bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800"
+        >
+          📄 Read GR
+        </a>
+      </div>
+    ))}
+  </div>
+</section>
       <Footer />
     </div>
   );
