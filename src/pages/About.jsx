@@ -1,93 +1,66 @@
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+
 function About() {
   return (
-    <div className="max-w-6xl mx-auto px-6 py-12">
+    <>
+      <Navbar />
 
-      <div className="bg-white rounded-2xl shadow-xl p-10">
+      <div className="max-w-6xl mx-auto px-6 py-12">
 
-        <h1 className="text-4xl font-bold text-green-700 mb-6 text-center">
-          About GovMitra AI
-        </h1>
+        <div className="grid md:grid-cols-2 gap-10 items-center">
 
-        <p className="text-lg text-gray-700 text-center leading-8">
-          GovMitra AI is an independent initiative designed to simplify
-          Maharashtra Government Resolutions using modern technology and
-          Artificial Intelligence.
-        </p>
-
-        <div className="border-t my-10"></div>
-
-        <h2 className="text-3xl font-bold text-green-700 mb-6 text-center">
-          👨‍💻 About the Founder
-        </h2>
-
-        <div className="text-center">
-
-          <div className="w-36 h-36 rounded-full bg-green-100 flex items-center justify-center mx-auto text-6xl">
-            👤
+          <div className="flex justify-center">
+            <img
+              src="/founder.jpg"
+              alt="Founder"
+              className="rounded-3xl shadow-2xl w-80"
+            />
           </div>
 
-          <h3 className="text-2xl font-bold mt-6">
-            Chandrakant Madhukar Rathod
-          </h3>
+          <div>
 
-          <p className="text-green-700 font-semibold mt-2">
-            Chief Accountant
-          </p>
+            <h2 className="text-4xl font-bold text-green-700">
+              Founder
+            </h2>
 
-          <p className="text-gray-600">
-            Forest Department, Maharashtra
-          </p>
+            <h1 className="text-5xl font-bold mt-3">
+              Chandrakant Madhukar Rathod
+            </h1>
 
-          <p className="text-gray-600 mt-2">
-            Founder & Developer – GovMitra AI
-          </p>
+            <p className="mt-6 text-xl font-semibold">
+              Chief Accountant
+            </p>
 
-        </div>
+            <p className="text-lg text-gray-600">
+              Forest Department, Maharashtra
+            </p>
 
-        <div className="mt-12">
+            <p className="mt-6 text-xl font-semibold text-green-700">
+              Founder & Developer
+            </p>
 
-          <h2 className="text-3xl font-bold text-green-700 mb-4">
-            🎯 Vision
-          </h2>
+            <p className="text-lg">
+              GovMitra AI
+            </p>
 
-          <p className="text-gray-700 leading-8">
-            The vision of GovMitra AI is to make Government Resolutions
-            easier to search, understand and access for Government
-            Employees through Artificial Intelligence.
-          </p>
+            <div className="mt-8 bg-green-50 border-l-4 border-green-700 p-5 rounded">
 
-        </div>
+              <p className="italic text-lg">
+                "Making Government Resolutions
+                Simple, Fast and AI Powered."
+              </p>
 
-        <div className="mt-10 bg-green-50 border-l-4 border-green-700 p-6 rounded-lg">
+            </div>
 
-          <h2 className="text-2xl font-bold text-green-700 mb-3">
-            💚 Our Mission
-          </h2>
-
-          <p className="text-gray-700 leading-8">
-            Technology should simplify Government information, not
-            complicate it.
-          </p>
-
-        </div>
-
-        <div className="mt-10 bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-lg">
-
-          <h2 className="text-xl font-bold mb-3">
-            Disclaimer
-          </h2>
-
-          <p className="text-gray-700 leading-8">
-            GovMitra AI is an independent project developed for educational
-            and informational purposes. It is not an official Government
-            of Maharashtra website.
-          </p>
+          </div>
 
         </div>
 
       </div>
 
-    </div>
+      <Footer />
+    </>
   );
 }
 

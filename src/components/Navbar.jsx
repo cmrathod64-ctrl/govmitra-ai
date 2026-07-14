@@ -7,9 +7,21 @@ function Navbar() {
 
         {/* Logo */}
         <div>
-          <h1 className="text-3xl font-bold tracking-wide">
-            🏛️ GovMitra AI
-          </h1>
+          <div className="flex items-center gap-3">
+  <img
+    src="/logo.png"
+    alt="GovMitra AI"
+    className="w-12 h-12 rounded-lg"
+  />
+
+  <div>
+    <h1 className="text-2xl font-bold">GovMitra AI</h1>
+
+    <p className="text-sm">
+      Maharashtra Government Resolution Portal
+    </p>
+  </div>
+</div>
 
           <p className="text-sm text-green-100">
             AI Powered Government Resolution Assistant
