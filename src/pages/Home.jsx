@@ -93,6 +93,57 @@ function Home() {
     ))}
   </div>
 </section>
+<section className="max-w-6xl mx-auto px-4 py-12">
+
+  <h2 className="text-3xl font-bold text-center text-green-700 mb-10">
+    ⭐ Why GovMitra AI?
+  </h2>
+
+  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+    <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition">
+      <div className="text-5xl mb-4">⚡</div>
+      <h3 className="text-xl font-bold mb-2">
+        Instant Search
+      </h3>
+      <p className="text-gray-600">
+        Find Government Resolutions in seconds.
+      </p>
+    </div>
+
+    <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition">
+      <div className="text-5xl mb-4">🤖</div>
+      <h3 className="text-xl font-bold mb-2">
+        AI Summary
+      </h3>
+      <p className="text-gray-600">
+        Understand Government Resolutions quickly with AI.
+      </p>
+    </div>
+
+    <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition">
+      <div className="text-5xl mb-4">📄</div>
+      <h3 className="text-xl font-bold mb-2">
+        Official PDFs
+      </h3>
+      <p className="text-gray-600">
+        Open official Government Resolution PDFs instantly.
+      </p>
+    </div>
+
+    <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition">
+      <div className="text-5xl mb-4">🏛️</div>
+      <h3 className="text-xl font-bold mb-2">
+        Smart Search
+      </h3>
+      <p className="text-gray-600">
+        Search by Department, Title and Keywords.
+      </p>
+    </div>
+
+  </div>
+
+</section>
       <Footer />
     </div>
   );
