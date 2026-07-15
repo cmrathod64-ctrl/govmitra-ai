@@ -6,7 +6,7 @@ function Search() {
   const [searchParams] = useSearchParams();
 
   const [search, setSearch] = useState(
-    searchParams.get("query") || ""
+    searchParams.get("q") || ""
   );
 
   const [selectedGR, setSelectedGR] = useState(null);
@@ -65,7 +65,7 @@ function Search() {
       <input
         type="text"
         placeholder="Search by Department, Title or Keyword..."
-        className="w-full border rounded-lg p-3"
+        className="w-full border border-gray-300 rounded-xl p-4 shadow-sm focus:outline-none focus:ring-2 focus:ring-green-600"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
@@ -99,7 +99,11 @@ function Search() {
       </div>
 
       <div className="mt-5 mb-6 text-gray-600 font-semibold">
-        Found {filteredGRs.length} Government Resolution
+        <div className="mt-5 mb-6">
+  <span className="bg-green-100 text-green-700 px-4 py-2 rounded-full font-semibold">
+    📄 Total Results : {filteredGRs.length}
+  </span>
+</div>
         {filteredGRs.length !== 1 ? "s" : ""}
       </div>
 
