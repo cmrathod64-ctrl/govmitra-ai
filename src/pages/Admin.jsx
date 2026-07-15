@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import AddGRForm from "../components/AddGRForm";
 
 function Admin() {
   return (
@@ -48,9 +49,10 @@ function Admin() {
                 View GR and department statistics.
               </p>
             </div>
+             
 
           </div>
-
+<AddGRForm />
         </div>
       </div>
 
