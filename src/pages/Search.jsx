@@ -1,7 +1,25 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import grs from "../data/grs";
+import { useEffect, useState } from "react";
+import { supabase } from "../lib/supabase";
+const [grs, setGrs] = useState([]);
 
+useEffect(() => {
+  fetchGRs();
+}, []);
+
+async function fetchGRs() {
+  const { data, error } = await supabase
+    .from("grs")
+    .select("*")
+    .order("gr_date", { ascending: false });
+
+  if (error) {
+    console.error(error);
+  } else {
+    setGrs(data);
+  }
+}
 function Search() {
   const [searchParams] = useSearchParams();
 
@@ -197,9 +215,27 @@ function Search() {
               <strong>📅 Date:</strong> {selectedGR.date}
             </p>
 
-            <div className="mt-4 bg-gray-100 rounded-lg p-4">
-              {selectedGR.summary}
-            </div>
+            <div className="mt-4 bg-green-50 border border-green-200 rounded-lg p-4">
+
+  <h3 className="font-bold text-green-700 mb-3">
+    🤖 AI Explanation (Marathi)
+  </h3>
+
+  <p className="leading-7">
+    {selectedGR.aiExplanation?.marathi || selectedGR.summary}
+  </p>
+
+  <hr className="my-4" />
+
+  <h3 className="font-bold text-blue-700 mb-3">
+    🇬🇧 English Explanation
+  </h3>
+
+  <p className="leading-7">
+    {selectedGR.aiExplanation?.english || selectedGR.summary}
+  </p>
+
+</div>
 
             <button
               onClick={() => setSelectedGR(null)}
