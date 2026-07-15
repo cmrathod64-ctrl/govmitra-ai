@@ -1,5 +1,4 @@
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -7,10 +6,37 @@ import SearchFilters from "../components/SearchFilters";
 import SearchCard from "../components/SearchCard";
 import AISummaryModal from "../components/AISummaryModal";
 
-import grs from "../data/grs";
-
+import { supabase } from "../lib/supabase";
 function Search() {
+const [grs, setGrs] = useState([]);
+const [loading, setLoading] = useState(true);
 
+useEffect(() => {
+  const fetchGRs = async () => {
+    const { data, error } = await supabase
+      .from("grs")
+      .select("*")
+      .order("gr_date", { ascending: false });
+
+    if (error) {
+      console.error("Error fetching GRs:", error);
+      setLoading(false);
+      return;
+    }
+
+    const formattedGRs = (data || []).map((gr) => ({
+      ...gr,
+      date: gr.gr_date || "",
+      pdf: gr.pdf_url || "",
+      keywords: Array.isArray(gr.keywords) ? gr.keywords : [],
+    }));
+
+    setGrs(formattedGRs);
+    setLoading(false);
+  };
+
+  fetchGRs();
+}, []);
   const [search, setSearch] = useState("");
   const [department, setDepartment] = useState("All");
   const [year, setYear] = useState("All");
