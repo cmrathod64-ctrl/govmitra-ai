@@ -1,43 +1,26 @@
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { supabase } from "../lib/supabase";
-const [grs, setGrs] = useState([]);
 
-useEffect(() => {
-  fetchGRs();
-}, []);
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
-async function fetchGRs() {
-  const { data, error } = await supabase
-    .from("grs")
-    .select("*")
-    .order("gr_date", { ascending: false });
+import SearchFilters from "../components/SearchFilters";
+import SearchCard from "../components/SearchCard";
+import AISummaryModal from "../components/AISummaryModal";
 
-  if (error) {
-    console.error(error);
-  } else {
-    setGrs(data);
-  }
-}
+import grs from "../data/grs";
+
 function Search() {
-  const [searchParams] = useSearchParams();
 
-  const [search, setSearch] = useState(
-    searchParams.get("q") || ""
-  );
-
-  const [selectedGR, setSelectedGR] = useState(null);
+  const [search, setSearch] = useState("");
   const [department, setDepartment] = useState("All");
   const [year, setYear] = useState("All");
+  const [selectedGR, setSelectedGR] = useState(null);
 
-  // Dynamic Department List
   const departments = [
     "All",
     ...new Set(grs.map((gr) => gr.department)),
   ];
 
-  // Dynamic Year List
   const years = [
     "All",
     ...new Set(
@@ -49,13 +32,26 @@ function Search() {
     return b - a;
   });
 
-  // Search + Filters
   const filteredGRs = grs.filter((gr) => {
+
     const matchesSearch =
-      gr.title.toLowerCase().includes(search.toLowerCase()) ||
-      gr.department.toLowerCase().includes(search.toLowerCase()) ||
+
+      gr.title
+        .toLowerCase()
+        .includes(search.toLowerCase()) ||
+
+      gr.department
+        .toLowerCase()
+        .includes(search.toLowerCase()) ||
+
+      gr.summary
+        .toLowerCase()
+        .includes(search.toLowerCase()) ||
+
       gr.keywords.some((keyword) =>
-        keyword.toLowerCase().includes(search.toLowerCase())
+        keyword
+          .toLowerCase()
+          .includes(search.toLowerCase())
       );
 
     const matchesDepartment =
@@ -71,186 +67,65 @@ function Search() {
       matchesDepartment &&
       matchesYear
     );
+
   });
 
   return (
-    <div className="max-w-6xl mx-auto p-8">
+    <>
+      <Navbar />
 
-      <h1 className="text-4xl font-bold text-green-700 mb-6">
-        🔍 Search Government Resolutions
-      </h1>
+      <div className="max-w-6xl mx-auto p-8">
 
-      <input
-        type="text"
-        placeholder="Search by Department, Title or Keyword..."
-        className="w-full border border-gray-300 rounded-xl p-4 shadow-sm focus:outline-none focus:ring-2 focus:ring-green-600"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+        <h1 className="text-4xl font-bold text-green-700 mb-6">
+          🔍 Search Government Resolutions
+        </h1>
+                        <SearchFilters
+          search={search}
+          setSearch={setSearch}
+          department={department}
+          setDepartment={setDepartment}
+          year={year}
+          setYear={setYear}
+          departments={departments}
+          years={years}
+        />
 
-      <div className="grid md:grid-cols-2 gap-4 mt-5">
-
-        <select
-          value={department}
-          onChange={(e) => setDepartment(e.target.value)}
-          className="border rounded-lg p-3"
-        >
-          {departments.map((dept) => (
-            <option key={dept}>
-              {dept}
-            </option>
-          ))}
-        </select>
-
-        <select
-          value={year}
-          onChange={(e) => setYear(e.target.value)}
-          className="border rounded-lg p-3"
-        >
-          {years.map((yr) => (
-            <option key={yr}>
-              {yr}
-            </option>
-          ))}
-        </select>
-
-      </div>
-
-      <div className="mt-5 mb-6 text-gray-600 font-semibold">
-        <div className="mt-5 mb-6">
-  <span className="bg-green-100 text-green-700 px-4 py-2 rounded-full font-semibold">
-    📄 Total Results : {filteredGRs.length}
-  </span>
-</div>
-        {filteredGRs.length !== 1 ? "s" : ""}
-      </div>
-
-      <div className="space-y-4">
-
-        {filteredGRs.length === 0 ? (
-
-          <div className="bg-white rounded-xl shadow-lg p-8 text-center">
-
-            <h2 className="text-2xl font-bold text-red-600">
-              😔 No Government Resolution Found
-            </h2>
-
-            <p className="mt-3 text-gray-600">
-              Try searching with another keyword,
-              department or year.
-            </p>
-
-          </div>
-
-        ) : (
-
-          filteredGRs.map((gr) => (
-            <div
-              key={gr.id}
-              className="bg-white shadow-lg rounded-xl p-5 border"
-            >
-
-              <h2 className="text-2xl font-bold">
-                {gr.title}
-              </h2>              <div className="flex gap-2 mt-3 flex-wrap">
-                <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
-                  🏛️ {gr.department}
-                </span>
-
-                <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">
-                  📅 {gr.date}
-                </span>
-              </div>
-
-              <p className="mt-4 text-gray-700">
-                {gr.summary}
-              </p>
-
-              <div className="mt-5 flex gap-3 flex-wrap">
-
-                <a
-                  href={gr.pdf}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-lg"
-                >
-                  📄 Open PDF
-                </a>
-
-                <button
-                  onClick={() => setSelectedGR(gr)}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg"
-                >
-                  🤖 AI Summary
-                </button>
-
-              </div>
-
-            </div>
-          ))
-
-        )}
-
-      </div>
-
-      {selectedGR && (
-
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-
-          <div className="bg-white rounded-xl p-6 w-full max-w-lg shadow-2xl">
-
-            <h2 className="text-2xl font-bold text-green-700 mb-4">
-              🤖 AI Summary
-            </h2>
-
-            <p>
-              <strong>📄 Title:</strong> {selectedGR.title}
-            </p>
-
-            <p className="mt-2">
-              <strong>🏛️ Department:</strong> {selectedGR.department}
-            </p>
-
-            <p className="mt-2">
-              <strong>📅 Date:</strong> {selectedGR.date}
-            </p>
-
-            <div className="mt-4 bg-green-50 border border-green-200 rounded-lg p-4">
-
-  <h3 className="font-bold text-green-700 mb-3">
-    🤖 AI Explanation (Marathi)
-  </h3>
-
-  <p className="leading-7">
-    {selectedGR.aiExplanation?.marathi || selectedGR.summary}
-  </p>
-
-  <hr className="my-4" />
-
-  <h3 className="font-bold text-blue-700 mb-3">
-    🇬🇧 English Explanation
-  </h3>
-
-  <p className="leading-7">
-    {selectedGR.aiExplanation?.english || selectedGR.summary}
-  </p>
-
-</div>
-
-            <button
-              onClick={() => setSelectedGR(null)}
-              className="mt-6 bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-lg w-full"
-            >
-              ❌ Close
-            </button>
-
-          </div>
-
+        <div className="mt-6 mb-6">
+          <span className="bg-green-100 text-green-700 px-4 py-2 rounded-full font-semibold">
+            📄 Total Results : {filteredGRs.length}
+          </span>
         </div>
 
-      )}
+        <div className="space-y-4">
+          {filteredGRs.length === 0 ? (
+            <div className="bg-white rounded-xl shadow-lg p-8 text-center">
+              <h2 className="text-2xl font-bold text-red-600">
+                😔 No Government Resolution Found
+              </h2>
 
-    </div>
+              <p className="mt-3 text-gray-600">
+                Try searching with another keyword, department or year.
+              </p>
+            </div>
+          ) : (
+            filteredGRs.map((gr) => (
+              <SearchCard
+                key={gr.id}
+                gr={gr}
+                onOpenSummary={setSelectedGR}
+              />
+            ))
+          )}
+        </div>
+                <AISummaryModal
+          gr={selectedGR}
+          onClose={() => setSelectedGR(null)}
+        />
+
+      </div>
+
+      <Footer />
+    </>
   );
 }
 
