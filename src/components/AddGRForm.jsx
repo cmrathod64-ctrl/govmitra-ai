@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { supabase } from "../lib/supabase";
 function AddGRForm() {
   const [formData, setFormData] = useState({
     title: "",
@@ -19,14 +19,55 @@ function AddGRForm() {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    console.log("New GR:", formData);
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
-    alert("GR Form Submitted Successfully!");
-  };
+  console.log("Current Session:", session);
 
+  if (!session) {
+    alert("Admin session not found. Please login again.");
+    return;
+  }
+
+  const keywordArray = formData.keywords
+    .split(",")
+    .map((keyword) => keyword.trim())
+    .filter(Boolean);
+
+  const { error } = await supabase
+    .from("grs")
+    .insert([
+      {
+        title: formData.title,
+        department: formData.department,
+        gr_date: formData.date,
+        summary: formData.summary,
+        keywords: keywordArray,
+        pdf_url: formData.pdf,
+      },
+    ]);
+
+  if (error) {
+    console.error("Supabase Error:", error);
+    alert("Error adding GR: " + error.message);
+    return;
+  }
+
+  alert("GR Added Successfully!");
+
+  setFormData({
+    title: "",
+    department: "",
+    date: "",
+    summary: "",
+    keywords: "",
+    pdf: "",
+  });
+};
   return (
     <div className="bg-white rounded-2xl shadow-lg p-6 mt-8">
       <h2 className="text-2xl font-bold text-green-700 mb-6">

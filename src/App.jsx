@@ -6,6 +6,7 @@ import Departments from "./pages/Departments";
 import DepartmentDetails from "./pages/DepartmentDetails";
 import Search from "./pages/Search";
 import Admin from "./pages/Admin";
+import AdminLogin from "./pages/AdminLogin";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
       <Route path="/departments/:name" element={<DepartmentDetails />} />
       <Route path="/search" element={<Search />} />
       <Route path="/admin" element={<Admin />} />
-      
+      <Route path="/admin-login" element={<AdminLogin />} />
     </Routes>
   );
 }
