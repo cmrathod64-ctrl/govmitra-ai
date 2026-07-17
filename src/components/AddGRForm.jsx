@@ -11,24 +11,48 @@ function AddGRForm() {
   });
 const [pdfFile, setPdfFile] = useState(null);
 const [generatingSummary, setGeneratingSummary] = useState(false);
+const [uploadedPdfUrl, setUploadedPdfUrl] = useState("");
 const handleGenerateSummary = async () => {
   try {
-    if (!formData.title || !formData.department) {
-      alert("Please enter GR Title and Department first.");
+    if (!pdfFile) {
+      alert("Please select a GR PDF first.");
       return;
     }
 
     setGeneratingSummary(true);
 
-    const text = `
-GR Title: ${formData.title}
-Department: ${formData.department}
-`;
+    let pdfUrl = uploadedPdfUrl;
 
+    // Upload PDF only if it has not already been uploaded
+    if (!pdfUrl) {
+      const fileName = `${Date.now()}-${pdfFile.name}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from("gr-pdfs")
+        .upload(fileName, pdfFile);
+
+      if (uploadError) {
+        console.error("PDF Upload Error:", uploadError);
+        alert("Error uploading PDF: " + uploadError.message);
+        return;
+      }
+
+      const { data: publicUrlData } = supabase.storage
+        .from("gr-pdfs")
+        .getPublicUrl(fileName);
+
+      pdfUrl = publicUrlData.publicUrl;
+
+      setUploadedPdfUrl(pdfUrl);
+    }
+
+    // Send PDF URL to Edge Function
     const { data, error } = await supabase.functions.invoke(
       "generate-gr-summary",
       {
-        body: { text },
+        body: {
+          pdfUrl: pdfUrl,
+        },
       }
     );
 
@@ -43,7 +67,7 @@ Department: ${formData.department}
       summary: data.summary,
     }));
 
-    alert("AI Summary Generated Successfully!");
+    alert("AI Summary Generated from PDF Successfully!");
   } catch (error) {
     console.error("AI Summary Error:", error);
     alert("Error generating AI summary.");
@@ -78,9 +102,9 @@ Department: ${formData.department}
     .split(",")
     .map((keyword) => keyword.trim())
     .filter(Boolean);
-let pdfUrl = "";
+let pdfUrl = uploadedPdfUrl;
 
-if (pdfFile) {
+if (pdfFile && !pdfUrl) {
   const fileName = `${Date.now()}-${pdfFile.name}`;
 
   const { error: uploadError } = await supabase.storage
@@ -129,6 +153,7 @@ if (pdfFile) {
     pdf: "",
       });
   setPdfFile(null);
+setUploadedPdfUrl("");
 };
   return (
     <div className="bg-white rounded-2xl shadow-lg p-6 mt-8">
