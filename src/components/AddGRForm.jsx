@@ -10,6 +10,47 @@ function AddGRForm() {
     pdf: "",
   });
 const [pdfFile, setPdfFile] = useState(null);
+const [generatingSummary, setGeneratingSummary] = useState(false);
+const handleGenerateSummary = async () => {
+  try {
+    if (!formData.title || !formData.department) {
+      alert("Please enter GR Title and Department first.");
+      return;
+    }
+
+    setGeneratingSummary(true);
+
+    const text = `
+GR Title: ${formData.title}
+Department: ${formData.department}
+`;
+
+    const { data, error } = await supabase.functions.invoke(
+      "generate-gr-summary",
+      {
+        body: { text },
+      }
+    );
+
+    if (error) {
+      console.error("AI Summary Error:", error);
+      alert("Error generating AI summary: " + error.message);
+      return;
+    }
+
+    setFormData((prev) => ({
+      ...prev,
+      summary: data.summary,
+    }));
+
+    alert("AI Summary Generated Successfully!");
+  } catch (error) {
+    console.error("AI Summary Error:", error);
+    alert("Error generating AI summary.");
+  } finally {
+    setGeneratingSummary(false);
+  }
+};
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -109,7 +150,16 @@ if (pdfFile) {
             placeholder="Enter Government Resolution title"
             className="w-full border rounded-xl p-3"
             required
-          />
+          /><button
+  type="button"
+  onClick={handleGenerateSummary}
+  disabled={generatingSummary}
+  className="mt-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold px-5 py-2 rounded-xl disabled:opacity-50"
+>
+  {generatingSummary
+    ? "✨ Generating AI Summary..."
+    : "✨ Generate AI Summary"}
+</button>
         </div>
 
         <div>
