@@ -163,45 +163,36 @@ setUploadedPdfUrl("");
 
       <form onSubmit={handleSubmit} className="space-y-5">
         <div>
-          <label className="block font-semibold mb-2">
-            GR Title
-          </label>
+  <label className="block font-semibold mb-2">
+    GR Title
+  </label>
 
-          <input
-            type="text"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-            placeholder="Enter Government Resolution title"
-            className="w-full border rounded-xl p-3"
-            required
-          /><button
-  type="button"
-  onClick={handleGenerateSummary}
-  disabled={generatingSummary}
-  className="mt-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold px-5 py-2 rounded-xl disabled:opacity-50"
->
-  {generatingSummary
-    ? "✨ Generating AI Summary..."
-    : "✨ Generate AI Summary"}
-</button>
-        </div>
+  <input
+    type="text"
+    name="title"
+    value={formData.title}
+    onChange={handleChange}
+    placeholder="Enter Government Resolution title"
+    className="w-full border rounded-xl p-3"
+    required
+  />
+</div>
 
-        <div>
-          <label className="block font-semibold mb-2">
-            Department
-          </label>
+<div>
+  <label className="block font-semibold mb-2">
+    Department
+  </label>
 
-          <input
-            type="text"
-            name="department"
-            value={formData.department}
-            onChange={handleChange}
-            placeholder="Example: Finance"
-            className="w-full border rounded-xl p-3"
-            required
-          />
-        </div>
+  <input
+    type="text"
+    name="department"
+    value={formData.department}
+    onChange={handleChange}
+    placeholder="Example: Finance"
+    className="w-full border rounded-xl p-3"
+    required
+  />
+</div>
 
         <div>
           <label className="block font-semibold mb-2">
@@ -250,11 +241,6 @@ setUploadedPdfUrl("");
         </div>
 
         <div>
-          <label className="block font-semibold mb-2">
-            PDF URL
-          </label>
-
-          <div>
   <label className="block font-semibold mb-2">
     Upload GR PDF
   </label>
@@ -265,8 +251,18 @@ setUploadedPdfUrl("");
     onChange={(e) => setPdfFile(e.target.files[0])}
     className="w-full border rounded-xl p-3"
   />
+
+  <button
+    type="button"
+    onClick={handleGenerateSummary}
+    disabled={generatingSummary}
+    className="mt-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold px-5 py-2 rounded-xl disabled:opacity-50"
+  >
+    {generatingSummary
+      ? "✨ Generating AI Summary..."
+      : "✨ Generate AI Summary"}
+  </button>
 </div>
-        </div>
 
         <button
           type="submit"
