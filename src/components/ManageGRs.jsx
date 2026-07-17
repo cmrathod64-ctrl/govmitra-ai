@@ -5,6 +5,7 @@ function ManageGRs() {
   const [grs, setGrs] = useState([]);
   const [loading, setLoading] = useState(true);
 const [editingGR, setEditingGR] = useState(null);
+const [editPdfFile, setEditPdfFile] = useState(null);
   useEffect(() => {
     fetchGRs();
   }, []);
@@ -44,11 +45,35 @@ const handleDelete = async (id) => {
 
   alert("GR Deleted Successfully!");
 
-  setGrs((currentGRs) =>
-    currentGRs.filter((gr) => gr.id !== id)
-  );
-};const handleUpdate = async () => {
+ setGrs((currentGRs) =>
+  currentGRs.filter((gr) => gr.id !== id)
+);
+};
+const handleUpdate = async () => {
   if (!editingGR) return;
+
+  let pdfUrl = editingGR.pdf_url;
+
+  // नवीन PDF select केली असेल तर upload करा
+  if (editPdfFile) {
+    const fileName = `${Date.now()}-${editPdfFile.name}`;
+
+    const { error: uploadError } = await supabase.storage
+      .from("gr-pdfs")
+      .upload(fileName, editPdfFile);
+
+    if (uploadError) {
+      console.error("PDF Upload Error:", uploadError);
+      alert("Error uploading PDF: " + uploadError.message);
+      return;
+    }
+
+    const { data: publicUrlData } = supabase.storage
+      .from("gr-pdfs")
+      .getPublicUrl(fileName);
+
+    pdfUrl = publicUrlData.publicUrl;
+  }
 
   const { error } = await supabase
     .from("grs")
@@ -56,6 +81,7 @@ const handleDelete = async (id) => {
       title: editingGR.title,
       department: editingGR.department,
       gr_date: editingGR.gr_date,
+      pdf_url: pdfUrl,
     })
     .eq("id", editingGR.id);
 
@@ -69,11 +95,14 @@ const handleDelete = async (id) => {
 
   setGrs((currentGRs) =>
     currentGRs.map((gr) =>
-      gr.id === editingGR.id ? { ...gr, ...editingGR } : gr
+      gr.id === editingGR.id
+        ? { ...gr, ...editingGR, pdf_url: pdfUrl }
+        : gr
     )
   );
 
   setEditingGR(null);
+  setEditPdfFile(null);
 };
   if (loading) {
     
@@ -131,6 +160,19 @@ const handleDelete = async (id) => {
       }
       className="w-full border rounded-lg p-3 mb-3"
     />
+<div className="mb-3">
+  <label className="block font-semibold mb-2">
+    Replace GR PDF
+  </label>
+
+  <input
+    type="file"
+    accept="application/pdf"
+    onChange={(e) => setEditPdfFile(e.target.files[0])}
+    className="w-full border rounded-lg p-3"
+  />
+</div>
+
 <button
   onClick={handleUpdate}
   className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg mr-3"
