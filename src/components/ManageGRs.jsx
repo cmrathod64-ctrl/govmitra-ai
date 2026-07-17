@@ -4,7 +4,7 @@ import { supabase } from "../lib/supabase";
 function ManageGRs() {
   const [grs, setGrs] = useState([]);
   const [loading, setLoading] = useState(true);
-
+const [editingGR, setEditingGR] = useState(null);
   useEffect(() => {
     fetchGRs();
   }, []);
@@ -15,14 +15,7 @@ function ManageGRs() {
       .select("*")
       .order("gr_date", { ascending: false });
       
-      <button
-  onClick={() => handleDelete(gr.id)}
-  className="mt-4 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg"
->
-  🗑️ Delete
-</button>
-
-    if (error) {
+          if (error) {
       console.error("Error fetching GRs:", error);
       setLoading(false);
       return;
@@ -54,17 +47,104 @@ const handleDelete = async (id) => {
   setGrs((currentGRs) =>
     currentGRs.filter((gr) => gr.id !== id)
   );
+};const handleUpdate = async () => {
+  if (!editingGR) return;
+
+  const { error } = await supabase
+    .from("grs")
+    .update({
+      title: editingGR.title,
+      department: editingGR.department,
+      gr_date: editingGR.gr_date,
+    })
+    .eq("id", editingGR.id);
+
+  if (error) {
+    console.error("Error updating GR:", error);
+    alert("Error updating GR: " + error.message);
+    return;
+  }
+
+  alert("GR Updated Successfully!");
+
+  setGrs((currentGRs) =>
+    currentGRs.map((gr) =>
+      gr.id === editingGR.id ? { ...gr, ...editingGR } : gr
+    )
+  );
+
+  setEditingGR(null);
 };
   if (loading) {
+    
     return (
       <div className="bg-white rounded-2xl shadow-lg p-6 mt-8">
+       
         <p className="text-gray-600">Loading GRs...</p>
       </div>
     );
   }
 
   return (
+    
     <div className="bg-white rounded-2xl shadow-lg p-6 mt-8">
+        {editingGR && (
+  <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 mb-6">
+    <h3 className="text-xl font-bold text-blue-700 mb-4">
+      ✏️ Edit Government Resolution
+    </h3>
+
+    <input
+      type="text"
+      value={editingGR.title || ""}
+      onChange={(e) =>
+        setEditingGR({
+          ...editingGR,
+          title: e.target.value,
+        })
+      }
+      className="w-full border rounded-lg p-3 mb-3"
+      placeholder="GR Title"
+    />
+
+    <input
+      type="text"
+      value={editingGR.department || ""}
+      onChange={(e) =>
+        setEditingGR({
+          ...editingGR,
+          department: e.target.value,
+        })
+      }
+      className="w-full border rounded-lg p-3 mb-3"
+      placeholder="Department"
+    />
+
+    <input
+      type="date"
+      value={editingGR.gr_date || ""}
+      onChange={(e) =>
+        setEditingGR({
+          ...editingGR,
+          gr_date: e.target.value,
+        })
+      }
+      className="w-full border rounded-lg p-3 mb-3"
+    />
+<button
+  onClick={handleUpdate}
+  className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg mr-3"
+>
+  💾 Save Changes
+</button>
+    <button
+      onClick={() => setEditingGR(null)}
+      className="bg-gray-500 text-white px-4 py-2 rounded-lg"
+    >
+      Cancel
+    </button>
+  </div>
+)}
       <h2 className="text-2xl font-bold text-green-700 mb-6">
         📄 Manage Government Resolutions
       </h2>
@@ -93,14 +173,22 @@ const handleDelete = async (id) => {
               </p>
 
               <p className="text-gray-500 text-sm mt-1">
-                Date: {gr.gr_date}
-                <button
+  Date: {gr.gr_date}
+</p>
+
+<button
+  onClick={() => setEditingGR(gr)}
+  className="mt-4 mr-3 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg"
+>
+  ✏️ Edit
+</button>
+
+<button
   onClick={() => handleDelete(gr.id)}
   className="mt-4 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg"
 >
   🗑️ Delete
 </button>
-              </p>
             </div>
           ))}
         </div>
