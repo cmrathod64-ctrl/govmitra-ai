@@ -9,7 +9,7 @@ function AddGRForm() {
     keywords: "",
     pdf: "",
   });
-
+const [pdfFile, setPdfFile] = useState(null);
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -37,9 +37,29 @@ function AddGRForm() {
     .split(",")
     .map((keyword) => keyword.trim())
     .filter(Boolean);
+let pdfUrl = "";
 
+if (pdfFile) {
+  const fileName = `${Date.now()}-${pdfFile.name}`;
+
+  const { error: uploadError } = await supabase.storage
+    .from("gr-pdfs")
+    .upload(fileName, pdfFile);
+
+  if (uploadError) {
+    console.error("PDF Upload Error:", uploadError);
+    alert("Error uploading PDF: " + uploadError.message);
+    return;
+  }
+
+  const { data: publicUrlData } = supabase.storage
+    .from("gr-pdfs")
+    .getPublicUrl(fileName);
+
+  pdfUrl = publicUrlData.publicUrl;
+}
   const { error } = await supabase
-    .from("grs")
+      .from("grs")
     .insert([
       {
         title: formData.title,
@@ -47,7 +67,7 @@ function AddGRForm() {
         gr_date: formData.date,
         summary: formData.summary,
         keywords: keywordArray,
-        pdf_url: formData.pdf,
+        pdf_url: pdfUrl,
       },
     ]);
 
@@ -60,13 +80,14 @@ function AddGRForm() {
   alert("GR Added Successfully!");
 
   setFormData({
-    title: "",
+        title: "",
     department: "",
     date: "",
     summary: "",
     keywords: "",
     pdf: "",
-  });
+      });
+  setPdfFile(null);
 };
   return (
     <div className="bg-white rounded-2xl shadow-lg p-6 mt-8">
@@ -158,14 +179,18 @@ function AddGRForm() {
             PDF URL
           </label>
 
-          <input
-            type="text"
-            name="pdf"
-            value={formData.pdf}
-            onChange={handleChange}
-            placeholder="/pdfs/sample.pdf"
-            className="w-full border rounded-xl p-3"
-          />
+          <div>
+  <label className="block font-semibold mb-2">
+    Upload GR PDF
+  </label>
+
+  <input
+    type="file"
+    accept="application/pdf"
+    onChange={(e) => setPdfFile(e.target.files[0])}
+    className="w-full border rounded-xl p-3"
+  />
+</div>
         </div>
 
         <button
