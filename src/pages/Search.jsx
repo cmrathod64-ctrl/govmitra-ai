@@ -17,6 +17,7 @@ useEffect(() => {
       .from("grs")
       .select("*")
       .order("gr_date", { ascending: false });
+      console.log("Supabase GR Data:", data);
 
     if (error) {
       console.error("Error fetching GRs:", error);
@@ -50,7 +51,7 @@ useEffect(() => {
   const years = [
     "All",
     ...new Set(
-      grs.map((gr) => gr.date.split("-")[2])
+      grs.map((gr) => gr.date.split("-")[0])
     ),
   ].sort((a, b) => {
     if (a === "All") return -1;
@@ -86,8 +87,7 @@ useEffect(() => {
 
     const matchesYear =
       year === "All" ||
-      gr.date.endsWith(year);
-
+      gr.date.startsWith(year)
     return (
       matchesSearch &&
       matchesDepartment &&
