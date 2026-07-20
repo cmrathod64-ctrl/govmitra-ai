@@ -7,6 +7,8 @@ function SearchFilters({
   setYear,
   departments,
   years,
+sortOrder,
+setSortOrder,
 }) {
   return (
     <>
@@ -19,7 +21,7 @@ function SearchFilters({
         onChange={(e) => setSearch(e.target.value)}
       />
 
-      <div className="grid md:grid-cols-2 gap-4 mt-5">
+      <div className="grid md:grid-cols-3 gap-4 mt-5">
 
         <select
           value={department}
@@ -35,6 +37,8 @@ function SearchFilters({
 
         <select
           value={year}
+          sortOrder={sortOrder}
+setSortOrder={setSortOrder}
           onChange={(e) => setYear(e.target.value)}
           className="border rounded-xl p-3"
         >
@@ -44,6 +48,14 @@ function SearchFilters({
             </option>
           ))}
         </select>
+        <select
+  value={sortOrder}
+  onChange={(e) => setSortOrder(e.target.value)}
+  className="border rounded-xl p-3"
+>
+  <option value="newest">Newest First</option>
+  <option value="oldest">Oldest First</option>
+</select>
 
       </div>
 

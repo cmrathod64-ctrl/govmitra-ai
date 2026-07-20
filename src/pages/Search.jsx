@@ -41,6 +41,7 @@ useEffect(() => {
   const [search, setSearch] = useState("");
   const [department, setDepartment] = useState("All");
   const [year, setYear] = useState("All");
+  const [sortOrder, setSortOrder] = useState("newest");
   const [selectedGR, setSelectedGR] = useState(null);
 
   const departments = [
@@ -95,7 +96,14 @@ useEffect(() => {
     );
 
   });
+const sortedGRs = [...filteredGRs].sort((a, b) => {
+  const dateA = new Date(a.date);
+  const dateB = new Date(b.date);
 
+  return sortOrder === "newest"
+    ? dateB - dateA
+    : dateA - dateB;
+});
   return (
     <>
       <Navbar />
@@ -134,7 +142,7 @@ useEffect(() => {
               </p>
             </div>
           ) : (
-            filteredGRs.map((gr) => (
+           sortedGRs.map((gr) => (
               <SearchCard
                 key={gr.id}
                 gr={gr}
