@@ -7,6 +7,7 @@ import DepartmentDetails from "./pages/DepartmentDetails";
 import Search from "./pages/Search";
 import Admin from "./pages/Admin";
 import AdminLogin from "./pages/AdminLogin";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -16,7 +17,14 @@ function App() {
       <Route path="/departments" element={<Departments />} />
       <Route path="/departments/:name" element={<DepartmentDetails />} />
       <Route path="/search" element={<Search />} />
-      <Route path="/admin" element={<Admin />} />
+      <Route
+  path="/admin"
+  element={
+    <ProtectedRoute>
+      <Admin />
+    </ProtectedRoute>
+  }
+/>
       <Route path="/admin-login" element={<AdminLogin />} />
     </Routes>
   );
