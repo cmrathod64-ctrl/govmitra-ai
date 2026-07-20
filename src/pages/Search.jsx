@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import SearchFilters from "../components/SearchFilters";
 import SearchCard from "../components/SearchCard";
 import AISummaryModal from "../components/AISummaryModal";
+import AskAIModal from "../components/AskAIModal";
 
 import { supabase } from "../lib/supabase";
 function Search() {
@@ -43,6 +44,7 @@ useEffect(() => {
   const [year, setYear] = useState("All");
   const [sortOrder, setSortOrder] = useState("newest");
   const [selectedGR, setSelectedGR] = useState(null);
+  const [askAIGR, setAskAIGR] = useState(null);
 
   const departments = [
     "All",
@@ -147,15 +149,20 @@ const sortedGRs = [...filteredGRs].sort((a, b) => {
                 key={gr.id}
                 gr={gr}
                 onOpenSummary={setSelectedGR}
+                onAskAI={setAskAIGR}
               />
             ))
           )}
         </div>
                 <AISummaryModal
+                
           gr={selectedGR}
           onClose={() => setSelectedGR(null)}
         />
-
+<AskAIModal
+  gr={askAIGR}
+  onClose={() => setAskAIGR(null)}
+/>
       </div>
 
       <Footer />

@@ -1,4 +1,4 @@
-function SearchCard({ gr, onOpenSummary }) {
+function SearchCard({ gr, onOpenSummary, onAskAI }) {
   return (
     <div className="bg-white shadow-lg rounded-xl p-5 border">
 
@@ -39,7 +39,12 @@ function SearchCard({ gr, onOpenSummary }) {
         >
           🤖 AI Summary
         </button>
-
+<button
+  onClick={() => onAskAI(gr)}
+  className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg"
+>
+  💬 Ask AI
+</button>
       </div>
 
     </div>
