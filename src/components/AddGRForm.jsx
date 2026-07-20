@@ -7,7 +7,8 @@ function AddGRForm() {
     date: "",
     summary: "",
     keywords: "",
-    pdf: "",
+pdf: "",
+officialSourceUrl: "",
   });
 const [pdfFile, setPdfFile] = useState(null);
 const [generatingSummary, setGeneratingSummary] = useState(false);
@@ -133,6 +134,7 @@ if (pdfFile && !pdfUrl) {
         summary: formData.summary,
         keywords: keywordArray,
         pdf_url: pdfUrl,
+        official_source_url: formData.officialSourceUrl || null,
       },
     ]);
 
@@ -151,6 +153,7 @@ if (pdfFile && !pdfUrl) {
     summary: "",
     keywords: "",
     pdf: "",
+    officialSourceUrl: "",
       });
   setPdfFile(null);
 setUploadedPdfUrl("");
@@ -239,7 +242,24 @@ setUploadedPdfUrl("");
             className="w-full border rounded-xl p-3"
           />
         </div>
+<div>
+  <label className="block font-semibold mb-2">
+    🏛️ Official Government Source URL
+  </label>
 
+  <input
+    type="url"
+    name="officialSourceUrl"
+    value={formData.officialSourceUrl}
+    onChange={handleChange}
+    placeholder="Paste official Maharashtra Government GR source URL"
+    className="w-full border rounded-xl p-3"
+  />
+
+  <p className="text-sm text-gray-500 mt-1">
+    Optional: Add the original official government source link for this GR.
+  </p>
+</div>
         <div>
   <label className="block font-semibold mb-2">
     Upload GR PDF

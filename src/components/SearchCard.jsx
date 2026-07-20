@@ -32,7 +32,16 @@ function SearchCard({ gr, onOpenSummary, onAskAI }) {
         >
           📄 Open PDF
         </a>
-
+{gr.official_source_url && (
+  <a
+    href={gr.official_source_url}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-lg"
+  >
+    🏛️ Official Source
+  </a>
+)}
         <button
           onClick={() => onOpenSummary(gr)}
           className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg"
