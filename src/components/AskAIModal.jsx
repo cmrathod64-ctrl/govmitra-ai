@@ -1,18 +1,52 @@
 import { useState } from "react";
+import { supabase } from "../lib/supabase";
 
 function AskAIModal({ gr, onClose }) {
   const [question, setQuestion] = useState("");
+  const [answer, setAnswer] = useState("");
+const [loading, setLoading] = useState(false);
+const [error, setError] = useState("");
 
   if (!gr) return null;
 
-  const handleAsk = () => {
-    if (!question.trim()) {
-      alert("Please enter your question.");
-      return;
+  const handleAsk = async () => {
+  if (!question.trim()) {
+    alert("Please enter your question.");
+    return;
+  }
+
+  setLoading(true);
+  setAnswer("");
+  setError("");
+
+  try {
+    const { data, error: functionError } =
+      await supabase.functions.invoke("ask-gr-ai", {
+        body: {
+          question: question.trim(),
+          pdfUrl: gr.pdf,
+        },
+      });
+
+    if (functionError) {
+      throw functionError;
     }
 
-    alert(`Your Question: ${question}`);
-  };
+    if (!data?.answer) {
+      throw new Error("AI answer could not be generated.");
+    }
+
+    setAnswer(data.answer);
+  } catch (err) {
+    console.error("Ask AI Error:", err);
+    setError(
+      err?.message ||
+        "AI कडून उत्तर मिळवताना समस्या आली. कृपया पुन्हा प्रयत्न करा."
+    );
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
@@ -48,7 +82,33 @@ function AskAIModal({ gr, onClose }) {
         >
           🤖 Ask AI
         </button>
+{loading && (
+  <div className="mt-4 bg-blue-50 border border-blue-200 rounded-lg p-4">
+    <p className="text-blue-700 font-semibold">
+      🤖 AI उत्तर तयार करत आहे...
+    </p>
+  </div>
+)}
 
+{error && (
+  <div className="mt-4 bg-red-50 border border-red-200 rounded-lg p-4">
+    <p className="text-red-700">
+      ❌ {error}
+    </p>
+  </div>
+)}
+
+{answer && (
+  <div className="mt-4 bg-green-50 border border-green-200 rounded-lg p-4">
+    <h3 className="font-bold text-green-700 mb-2">
+      🤖 AI Answer
+    </h3>
+
+    <p className="text-gray-700 whitespace-pre-wrap">
+      {answer}
+    </p>
+  </div>
+)}
       </div>
     </div>
   );
