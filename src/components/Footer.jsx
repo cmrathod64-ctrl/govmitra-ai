@@ -15,7 +15,24 @@ function Footer() {
         <p className="mt-2 text-gray-400">
           Making Government Resolutions Smarter, Faster & Simpler.
         </p>
+<div className="mt-6 bg-slate-800 rounded-xl p-4 text-sm text-gray-300">
+  <p className="font-semibold text-yellow-300">
+    ⚠️ Disclaimer
+  </p>
 
+  <p className="mt-2">
+    GovMitra AI is an independent informational platform and is not an
+    official website of the Government of Maharashtra or any government
+    department.
+  </p>
+
+  <p className="mt-2">
+    AI-generated summaries and answers are provided for informational
+    purposes only. Users should always refer to the original Government
+    Resolution (GR) and official government sources for authoritative
+    information.
+  </p>
+</div>
         <div className="border-t border-gray-700 my-8"></div>
 
         <p className="text-gray-300 font-semibold">

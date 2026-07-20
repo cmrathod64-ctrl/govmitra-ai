@@ -50,7 +50,7 @@ const [error, setError] = useState("");
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-xl shadow-xl p-6 w-full max-w-2xl">
+      <div className="bg-white rounded-xl shadow-xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
 
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-bold text-green-700">
@@ -106,6 +106,15 @@ const [error, setError] = useState("");
 
     <p className="text-gray-700 whitespace-pre-wrap">
       {answer}
+      {answer && (
+  <div className="mt-3 bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+    <p className="text-sm text-yellow-800">
+      ⚠️ This answer is AI-generated and is provided for informational
+      purposes only. Please verify the information with the original
+      Government Resolution (GR) and official government sources.
+    </p>
+  </div>
+)}
     </p>
   </div>
 )}
