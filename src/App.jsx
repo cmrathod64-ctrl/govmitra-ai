@@ -8,6 +8,8 @@ import Search from "./pages/Search";
 import Admin from "./pages/Admin";
 import AdminLogin from "./pages/AdminLogin";
 import ProtectedRoute from "./components/ProtectedRoute";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Terms from "./pages/Terms";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
       <Route path="/departments" element={<Departments />} />
       <Route path="/departments/:name" element={<DepartmentDetails />} />
       <Route path="/search" element={<Search />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="/terms" element={<Terms />} />
       <Route
   path="/admin"
   element={
