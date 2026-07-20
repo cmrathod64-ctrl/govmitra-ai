@@ -82,6 +82,7 @@ const handleUpdate = async () => {
       department: editingGR.department,
       gr_date: editingGR.gr_date,
       pdf_url: pdfUrl,
+      official_source_url: editingGR.official_source_url || null,
     })
     .eq("id", editingGR.id);
 
@@ -160,6 +161,18 @@ const handleUpdate = async () => {
       }
       className="w-full border rounded-lg p-3 mb-3"
     />
+    <input
+  type="url"
+  value={editingGR.official_source_url || ""}
+  onChange={(e) =>
+    setEditingGR({
+      ...editingGR,
+      official_source_url: e.target.value,
+    })
+  }
+  className="w-full border rounded-lg p-3 mb-3"
+  placeholder="Official Government Source URL"
+/>
 <div className="mb-3">
   <label className="block font-semibold mb-2">
     Replace GR PDF
