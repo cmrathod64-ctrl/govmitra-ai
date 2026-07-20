@@ -2,6 +2,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import AddGRForm from "../components/AddGRForm";
 import ManageGRs from "../components/ManageGRs";
+import BulkImportGR from "../components/BulkImportGR";
 
 function Admin() {
   return (
@@ -54,6 +55,7 @@ function Admin() {
 
           </div>
 <AddGRForm />
+<BulkImportGR />
 <ManageGRs />
         </div>
       </div>
