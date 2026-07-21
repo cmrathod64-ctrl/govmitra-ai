@@ -10,7 +10,7 @@ import AdminLogin from "./pages/AdminLogin";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
-
+import Contact from "./pages/Contact";
 function App() {
   return (
     <Routes>
@@ -21,6 +21,7 @@ function App() {
       <Route path="/search" element={<Search />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/terms" element={<Terms />} />
+      <Route path="/contact" element={<Contact />} />
       <Route
   path="/admin"
   element={
