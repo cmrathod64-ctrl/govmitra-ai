@@ -58,6 +58,14 @@ function Footer() {
 >
   Terms & Conditions
 </Link>
+<span className="mx-3 text-gray-500">|</span>
+
+<Link
+  to="/contact"
+  className="text-green-400 hover:text-green-300 underline"
+>
+  Contact & Feedback
+</Link>
 </div>
         <p className="mt-5 text-gray-500 text-sm">
           © 2026 GovMitra AI. All Rights Reserved.
