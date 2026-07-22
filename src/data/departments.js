@@ -49,11 +49,11 @@ const departments = [
     icon: "🚰",
     title: "पाणीपुरवठा व स्वच्छता विभाग",
   },
-  {
-    id: 11,
-    icon: "📂",
-    title: "इतर महत्त्वाचे विभाग",
-  },
+ {
+  id: 11,
+  icon: "📚",
+  title: "महत्त्वाचे नियम, परिपत्रके व इतर विभागांचे GR",
+},
 ];
 
 export default departments;
