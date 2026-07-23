@@ -1,19 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 
 function Navbar() {
 
-  const navigate = useNavigate();
-  const [query, setQuery] = useState("");
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-
-    if (query.trim() !== "") {
-      navigate(`/search?q=${encodeURIComponent(query)}`);
-    }
-  };
 
   return (
     
@@ -75,25 +65,7 @@ function Navbar() {
           </Link>
 
         </nav>
-<form
-  onSubmit={handleSearch}
-  className="hidden lg:flex items-center gap-2"
->
-  <input
-    type="text"
-    placeholder="Search GR..."
-    value={query}
-    onChange={(e) => setQuery(e.target.value)}
-    className="px-3 py-2 rounded-lg text-black w-64 outline-none"
-  />
 
-  <button
-    type="submit"
-    className="bg-yellow-400 text-black px-4 py-2 rounded-lg font-semibold hover:bg-yellow-300"
-  >
-    🔍
-  </button>
-</form>
         {/* Version Badge */}
         <div className="hidden lg:block">
           <span className="bg-white text-green-700 px-4 py-2 rounded-full font-semibold text-sm shadow">

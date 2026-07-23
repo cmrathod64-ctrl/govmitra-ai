@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
 
 function AskAIModal({ gr, onClose }) {
@@ -6,7 +6,11 @@ function AskAIModal({ gr, onClose }) {
   const [answer, setAnswer] = useState("");
 const [loading, setLoading] = useState(false);
 const [error, setError] = useState("");
-
+useEffect(() => {
+  setQuestion("");
+  setAnswer("");
+  setError("");
+}, [gr]);
   if (!gr) return null;
 
   const handleAsk = async () => {
@@ -24,7 +28,7 @@ const [error, setError] = useState("");
       await supabase.functions.invoke("ask-gr-ai", {
         body: {
           question: question.trim(),
-          pdfUrl: gr.pdf,
+          pdfUrl: gr.pdf_url,
         },
       });
 
