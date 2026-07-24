@@ -1,36 +1,27 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
-
 
 function Navbar() {
-
-
   return (
-    
     <header className="sticky top-0 z-50 bg-green-700 text-white shadow-lg">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
-        {/* Logo */}
-        <div>
-          <div className="flex items-center gap-3">
-  <img
-    src="/logo.png"
-    alt="GovMitra AI"
-    className="w-12 h-12 rounded-lg"
-  />
+        {/* Logo + Brand */}
+        <div className="flex items-center gap-4">
+          <img
+  src="/logo.png?v=2"
+  alt="GovMitra AI"
+  className="w-14 h-14 object-contain rounded-lg"
+/>
 
-  <div>
-    <h1 className="text-2xl font-bold">GovMitra AI</h1>
+          <div>
+            <h1 className="text-3xl font-extrabold tracking-tight">
+              GovMitra AI
+            </h1>
 
-    <p className="text-sm">
-      Maharashtra Government Resolution Portal
-    </p>
-  </div>
-</div>
-
-          <p className="text-sm text-green-100">
-            AI Powered Government Resolution Assistant
-          </p>
+            <p className="text-sm text-green-100">
+              AI Powered Government Resolution Platform
+            </p>
+          </div>
         </div>
 
         {/* Navigation */}
@@ -66,10 +57,10 @@ function Navbar() {
 
         </nav>
 
-        {/* Version Badge */}
+        {/* AI Powered Badge */}
         <div className="hidden lg:block">
-          <span className="bg-white text-green-700 px-4 py-2 rounded-full font-semibold text-sm shadow">
-            Version 1.1
+          <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full font-semibold text-sm shadow-lg">
+            ✨ AI Powered
           </span>
         </div>
 
