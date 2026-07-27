@@ -36,12 +36,10 @@ setSortOrder,
         </select>
 
         <select
-          value={year}
-          sortOrder={sortOrder}
-setSortOrder={setSortOrder}
-          onChange={(e) => setYear(e.target.value)}
-          className="border rounded-xl p-3"
-        >
+  value={year}
+  onChange={(e) => setYear(e.target.value)}
+  className="border rounded-xl p-3"
+>
           {years.map((yr) => (
             <option key={yr}>
               {yr}

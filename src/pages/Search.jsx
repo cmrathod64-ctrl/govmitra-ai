@@ -6,7 +6,7 @@ import SearchFilters from "../components/SearchFilters";
 import SearchCard from "../components/SearchCard";
 import AISummaryModal from "../components/AISummaryModal";
 import AskAIModal from "../components/AskAIModal";
-
+import { useSearchParams } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 function Search() {
 const [grs, setGrs] = useState([]);
@@ -39,18 +39,32 @@ useEffect(() => {
 
   fetchGRs();
 }, []);
-  const [search, setSearch] = useState("");
-  const [department, setDepartment] = useState("All");
-  const [year, setYear] = useState("All");
-  const [sortOrder, setSortOrder] = useState("newest");
-  const [selectedGR, setSelectedGR] = useState(null);
-  const [askAIGR, setAskAIGR] = useState(null);
+  const [searchParams] = useSearchParams();
 
-  const departments = [
-    "All",
-    ...new Set(grs.map((gr) => gr.department)),
-  ];
+const [search, setSearch] = useState(
+  searchParams.get("query") || ""
+);
 
+const [department, setDepartment] = useState(
+  searchParams.get("department") || "All"
+);
+
+const [year, setYear] = useState("All");
+const [sortOrder, setSortOrder] = useState("newest");
+const [selectedGR, setSelectedGR] = useState(null);
+const [askAIGR, setAskAIGR] = useState(null);
+
+const departments = [
+  "All",
+  ...new Set(grs.map((gr) => gr.department)),
+];
+
+const handleResetFilters = () => {
+  setSearch("");
+  setDepartment("All");
+  setYear("All");
+  setSortOrder("newest");
+};
   const years = [
     "All",
     ...new Set(
@@ -116,22 +130,30 @@ const sortedGRs = [...filteredGRs].sort((a, b) => {
           🔍 Search Government Resolutions
         </h1>
                         <SearchFilters
-          search={search}
-          setSearch={setSearch}
-          department={department}
-          setDepartment={setDepartment}
-          year={year}
-          setYear={setYear}
-          departments={departments}
-          years={years}
-        />
+  search={search}
+  setSearch={setSearch}
+  department={department}
+  setDepartment={setDepartment}
+  year={year}
+  setYear={setYear}
+  departments={departments}
+  years={years}
+  sortOrder={sortOrder}
+  setSortOrder={setSortOrder}
+/>
 
-        <div className="mt-6 mb-6">
-          <span className="bg-green-100 text-green-700 px-4 py-2 rounded-full font-semibold">
-            📄 Total Results : {filteredGRs.length}
-          </span>
-        </div>
+       <div className="mt-6 mb-6 flex items-center justify-between">
+  <span className="bg-green-100 text-green-700 px-4 py-2 rounded-full font-semibold">
+    📄 Total Results : {filteredGRs.length}
+  </span>
 
+  <button
+    onClick={handleResetFilters}
+    className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg"
+  >
+    🔄 Reset Filters
+  </button>
+</div>
         <div className="space-y-4">
           {filteredGRs.length === 0 ? (
             <div className="bg-white rounded-xl shadow-lg p-8 text-center">
