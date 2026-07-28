@@ -40,7 +40,7 @@ useEffect(() => {
   fetchGRs();
 }, []);
   const [searchParams] = useSearchParams();
-
+  const pageType = searchParams.get("type") || "";
 const [search, setSearch] = useState(
   searchParams.get("query") || ""
 );
@@ -75,7 +75,6 @@ const handleResetFilters = () => {
     if (b === "All") return 1;
     return b - a;
   });
-
   const filteredGRs = grs.filter((gr) => {
 
     const matchesSearch =
@@ -99,9 +98,16 @@ const handleResetFilters = () => {
       );
 
     const matchesDepartment =
-      department === "All" ||
-      gr.department === department;
-
+  pageType === "other"
+    ? (
+        gr.department === "नियमावली" ||
+        gr.department === "पुस्तिका" ||
+        gr.department === "मार्गदर्शक सूचना"
+      )
+    : (
+        department === "All" ||
+        gr.department === department
+      );
     const matchesYear =
       year === "All" ||
       gr.date.startsWith(year)
@@ -112,7 +118,8 @@ const handleResetFilters = () => {
     );
 
   });
-  const hasFilters =
+ const hasFilters =
+  pageType === "other" ||
   search.trim() !== "" ||
   department !== "All" ||
   year !== "All";

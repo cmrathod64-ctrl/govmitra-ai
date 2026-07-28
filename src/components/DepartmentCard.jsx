@@ -6,10 +6,10 @@ function DepartmentCard({ icon, title, value }) {
   return (
     <Link
       to={
-        searchValue === "other"
-          ? "/other-documents"
-          : `/search?department=${encodeURIComponent(searchValue)}`
-      }
+  searchValue === "OTHER_DOCS"
+    ? "/search?type=other"
+    : `/search?department=${encodeURIComponent(searchValue)}`
+}
     >
       <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition duration-300 text-center cursor-pointer">
         <div className="text-5xl">{icon}</div>

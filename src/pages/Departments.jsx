@@ -21,10 +21,11 @@ function Departments() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {departments.map((department) => (
             <DepartmentCard
-              key={department.id}
-              icon={department.icon}
-              title={department.title}
-            />
+  key={department.id}
+  icon={department.icon}
+  title={department.title}
+  value={department.value}
+/>
           ))}
         </div>
 
