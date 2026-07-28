@@ -112,6 +112,10 @@ const handleResetFilters = () => {
     );
 
   });
+  const hasFilters =
+  search.trim() !== "" ||
+  department !== "All" ||
+  year !== "All";
 const sortedGRs = [...filteredGRs].sort((a, b) => {
   const dateA = new Date(a.date);
   const dateB = new Date(b.date);
@@ -142,7 +146,9 @@ const sortedGRs = [...filteredGRs].sort((a, b) => {
   setSortOrder={setSortOrder}
 />
 
-       <div className="mt-6 mb-6 flex items-center justify-between">
+   {hasFilters && (
+<div className="mt-6 mb-6 flex items-center justify-between">
+
   <span className="bg-green-100 text-green-700 px-4 py-2 rounded-full font-semibold">
     📄 Total Results : {filteredGRs.length}
   </span>
@@ -153,28 +159,48 @@ const sortedGRs = [...filteredGRs].sort((a, b) => {
   >
     🔄 Reset Filters
   </button>
-</div>
-        <div className="space-y-4">
-          {filteredGRs.length === 0 ? (
-            <div className="bg-white rounded-xl shadow-lg p-8 text-center">
-              <h2 className="text-2xl font-bold text-red-600">
-                😔 No Government Resolution Found
-              </h2>
 
-              <p className="mt-3 text-gray-600">
-                Try searching with another keyword, department or year.
-              </p>
-            </div>
-          ) : (
-           sortedGRs.map((gr) => (
-              <SearchCard
-                key={gr.id}
-                gr={gr}
-                onOpenSummary={setSelectedGR}
-                onAskAI={setAskAIGR}
-              />
-            ))
-          )}
+</div>
+)}
+        <div className="space-y-4">
+     {!hasFilters ? (
+
+  <div className="bg-white rounded-xl shadow-lg p-10 text-center">
+    <h2 className="text-3xl font-bold text-green-700">
+      🔍 Start Searching
+    </h2>
+
+    <p className="mt-4 text-gray-600">
+      Search by keyword, department or year.
+      <br />
+      Results will appear here.
+    </p>
+  </div>
+
+) : filteredGRs.length === 0 ? (
+
+  <div className="bg-white rounded-xl shadow-lg p-8 text-center">
+    <h2 className="text-2xl font-bold text-red-600">
+      😔 No Government Resolution Found
+    </h2>
+
+    <p className="mt-3 text-gray-600">
+      Try searching with another keyword, department or year.
+    </p>
+  </div>
+
+) : (
+
+  sortedGRs.map((gr) => (
+    <SearchCard
+      key={gr.id}
+      gr={gr}
+      onOpenSummary={setSelectedGR}
+      onAskAI={setAskAIGR}
+    />
+  ))
+
+)}
         </div>
                 <AISummaryModal
                 

@@ -1,15 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-
 function Hero() {
-  const [search, setSearch] = useState("");
-  const navigate = useNavigate();
+   const navigate = useNavigate();
 
-  const handleSearch = () => {
-    navigate(`/search?query=${encodeURIComponent(search)}`);
-  };
-
-  return (
+   return (
     <section className="bg-gradient-to-r from-green-700 to-emerald-600 text-white py-20 px-6">
 
       <div className="max-w-5xl mx-auto text-center">
@@ -28,28 +21,16 @@ function Hero() {
           Government Orders in one place.
         </p>
 
-        <div className="mt-10 flex flex-col md:flex-row gap-4 justify-center">
+        <div className="mt-10 flex justify-center">
 
-          <input
-            type="text"
-            placeholder="🔍 Search Government Resolution..."
-            className="w-full md:w-[500px] rounded-xl p-4 text-black shadow-lg outline-none"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") handleSearch();
-            }}
-          />
+  <button
+    onClick={() => navigate("/search")}
+    className="bg-white text-green-700 px-10 py-4 rounded-xl text-lg font-bold shadow-lg hover:bg-green-100 transition"
+  >
+    🔍 Start Search
+  </button>
 
-          <button
-            onClick={handleSearch}
-            className="bg-white text-green-700 px-8 py-4 rounded-xl font-bold hover:bg-green-100 transition"
-          >
-            Search
-          </button>
-
-        </div>
-
+</div>
       </div>
 
     </section>
