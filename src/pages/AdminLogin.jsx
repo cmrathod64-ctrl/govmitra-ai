@@ -1,9 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 
 function AdminLogin() {
   const navigate = useNavigate();
+  useEffect(() => {
+  const checkSession = async () => {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    if (session) {
+      navigate("/admin", { replace: true });
+    }
+  };
+
+  checkSession();
+}, [navigate]);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

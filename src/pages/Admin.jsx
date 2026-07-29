@@ -3,7 +3,15 @@ import Footer from "../components/Footer";
 import AddGRForm from "../components/AddGRForm";
 import ManageGRs from "../components/ManageGRs";
 import BulkImportGR from "../components/BulkImportGR";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "../lib/supabase";
 function Admin() {
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    navigate("/admin-login", { replace: true });
+  };
   return (
     <>
       <Navbar />
@@ -11,9 +19,18 @@ function Admin() {
       <div className="min-h-screen bg-slate-100">
         <div className="max-w-6xl mx-auto px-6 py-10">
 
-          <h1 className="text-4xl font-bold text-green-700">
-            🛠️ Admin Dashboard
-          </h1>
+          <div className="flex justify-between items-center">
+  <h1 className="text-4xl font-bold text-green-700">
+    🛠️ Admin Dashboard
+  </h1>
+
+  <button
+    onClick={handleLogout}
+    className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg"
+  >
+    Logout
+  </button>
+</div>
 
           <p className="text-gray-600 mt-2">
             Manage GovMitra AI Government Resolutions
