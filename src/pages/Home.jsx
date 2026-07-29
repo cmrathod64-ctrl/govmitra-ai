@@ -65,8 +65,7 @@ useEffect(() => {
               <h3 className="text-xl font-bold mb-2">{gr.title}</h3>
               <span className="inline-block bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">🏛️ {gr.department}</span>
               <span className="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm ml-2">📅 {gr.gr_date}</span>
-              <p className="mt-4 text-gray-600">{gr.summary}</p>
-              <a href={gr.pdf_url} target="_blank" rel="noopener noreferrer" className="inline-block mt-4 bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800">📄 Read GR</a>
+                          <a href={gr.pdf_url} target="_blank" rel="noopener noreferrer" className="inline-block mt-4 bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800">📄 Read GR</a>
             </div>
           ))}
         </div>
@@ -83,8 +82,7 @@ useEffect(() => {
               <h3 className="text-xl font-bold mb-2">{gr.title}</h3>
               <span className="inline-block bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">🏛️ {gr.department}</span>
               <span className="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm ml-2">📅 {gr.gr_date}</span>
-              <p className="mt-4 text-gray-600">{gr.summary}</p>
-              <a href={gr.pdf_url} target="_blank" rel="noopener noreferrer" className="inline-block mt-4 bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800">📄 Read GR</a>
+                    <a href={gr.pdf_url} target="_blank" rel="noopener noreferrer" className="inline-block mt-4 bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800">📄 Read GR</a>
             </div>
           ))}
         </div>
