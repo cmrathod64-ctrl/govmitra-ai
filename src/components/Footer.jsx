@@ -7,11 +7,11 @@ function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-10 text-center">
 
         <h2 className="text-3xl font-bold text-green-400">
-          🏛️ GovMitra AI
+          🤖 GovMitra AI
         </h2>
 
         <p className="mt-3 text-gray-300 text-lg">
-          AI Powered Government Resolution Assistant
+         AI Powered Maharashtra Government Resolution Search Platform
         </p>
 
         <p className="mt-2 text-gray-400">
@@ -38,25 +38,28 @@ function Footer() {
         <div className="border-t border-gray-700 my-8"></div>
 
         <p className="text-gray-300 font-semibold">
-          Founder & Developer
+         Developed by
         </p>
 
         <h3 className="text-xl font-bold text-white mt-2">
           Chandrakant Madhukar Rathod
         </h3>
+        <p className="text-green-400 mt-2">
+  🌐 www.gov-mitra.com
+</p>
 <div className="mt-6">
   <Link
     to="/privacy-policy"
     className="text-green-400 hover:text-green-300 underline"
   >
-    Privacy Policy
+   🔒 Privacy Policy
   </Link><span className="mx-3 text-gray-500">|</span>
 
 <Link
   to="/terms"
   className="text-green-400 hover:text-green-300 underline"
 >
-  Terms & Conditions
+ 📜 Terms
 </Link>
 <span className="mx-3 text-gray-500">|</span>
 
@@ -64,7 +67,7 @@ function Footer() {
   to="/contact"
   className="text-green-400 hover:text-green-300 underline"
 >
-  Contact & Feedback
+  📞 Contact
 </Link>
 </div>
         <p className="mt-5 text-gray-500 text-sm">
@@ -72,8 +75,12 @@ function Footer() {
         </p>
 
         <p className="mt-2 text-gray-500 text-sm">
-          Made with ❤️ in India 🇮🇳
-        </p>
+  Made with ❤️ in India 🇮🇳
+</p>
+
+<p className="text-gray-500 text-xs mt-1">
+  Version 1.0.0
+</p>
 
       </div>
 

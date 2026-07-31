@@ -1,124 +1,196 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import {
+  Menu,
+  X,
+  Home,
+  Building2,
+  Search,
+  Info,
+} from "lucide-react";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const closeMenu = () => setMenuOpen(false);
+
   return (
-    <header className="sticky top-0 z-50 bg-green-700 text-white shadow-lg">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <>
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b shadow-sm">
 
-        {/* Logo + Brand */}
-        <div className="flex items-center gap-4">
-          <img
-            src="/logo.png?v=2"
-            alt="GovMitra AI"
-            className="w-14 h-14 object-contain rounded-lg"
-          />
+        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
 
-          <div>
-            <h1 className="text-3xl font-extrabold tracking-tight">
-              GovMitra AI
-            </h1>
+          {/* Left */}
+          <div className="flex items-center gap-3">
 
-            <p className="text-sm text-green-100">
-              AI Powered Government Resolution Platform
-            </p>
+            <button
+              onClick={() => setMenuOpen(true)}
+              className="md:hidden"
+            >
+              <Menu size={28} />
+            </button>
+
+            <Link to="/" className="flex items-center gap-2">
+              <img
+                src="/logo.png?v=2"
+                alt="GovMitra AI"
+               className="w-12 h-12 rounded-lg"
+              />
+
+              <div>
+                <h1 className="text-lg md:text-2xl font-bold text-green-700">
+                  GovMitra AI
+                </h1>
+
+                <p className="hidden md:block text-xs text-gray-500">
+                  AI Powered Government Resolution Platform
+                </p>
+              </div>
+            </Link>
+
           </div>
-        </div>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8 font-medium">
-          <Link
-            to="/"
-            className="hover:text-yellow-300 transition duration-300"
-          >
-            🏠 Home
-          </Link>
+          {/* Desktop Menu */}
 
-          <Link
-            to="/departments"
-            className="hover:text-yellow-300 transition duration-300"
-          >
-            🏛️ Departments
-          </Link>
+          <nav className="hidden md:flex items-center gap-8 font-medium text-gray-700">
+
+  <Link
+    to="/"
+    className="flex items-center gap-2 hover:text-green-700 transition-all duration-200 hover:scale-105"
+  >
+    <Home size={18} />
+    Home
+  </Link>
+
+  <Link
+    to="/departments"
+    className="flex items-center gap-2 hover:text-green-700 transition-all duration-200 hover:scale-105"
+  >
+    <Building2 size={18} />
+    Departments
+  </Link>
+
+  <Link
+    to="/search"
+    className="flex items-center gap-2 hover:text-green-700 transition-all duration-200 hover:scale-105"
+  >
+    <Search size={18} />
+    Search
+  </Link>
+
+  <Link
+    to="/about"
+    className="flex items-center gap-2 hover:text-green-700 transition-all duration-200 hover:scale-105"
+  >
+    <Info size={18} />
+    About
+  </Link>
+
+</nav>
+
+          {/* Right */}
 
           <Link
             to="/search"
-            className="hover:text-yellow-300 transition duration-300"
+            className="md:hidden text-green-700"
           >
-            🔍 Search
+            <Search size={24} />
           </Link>
 
-          <Link
-            to="/about"
-            className="hover:text-yellow-300 transition duration-300"
-          >
-            ℹ️ About
-          </Link>
-        </nav>
-
-        {/* Right Side */}
-        <div className="flex items-center gap-4">
-
-          {/* AI Badge */}
           <div className="hidden lg:block">
-            <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full font-semibold text-sm shadow-lg">
-              ✨ AI Powered
+            <span className="bg-green-700 text-white px-4 py-2 rounded-full text-sm">
+              AI Powered
             </span>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-3xl"
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            ☰
+        </div>
+
+      </header>
+
+      {/* Overlay */}
+
+      {menuOpen && (
+        <div
+          className="fixed inset-0 bg-black/40 z-40"
+          onClick={closeMenu}
+        />
+      )}
+
+      {/* Side Menu */}
+
+      <div
+        className={`fixed top-0 left-0 h-full w-72 bg-white z-50 shadow-xl transform transition-transform duration-300 ${
+          menuOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <div className="flex items-center justify-between p-5 border-b">
+
+          <div className="flex items-center gap-3">
+
+            <img
+              src="/logo.png?v=2"
+              className="w-10 h-10"
+            />
+
+            <div>
+              <h2 className="font-bold text-green-700">
+                GovMitra AI
+              </h2>
+
+              <p className="text-xs text-gray-500">
+                Government Resolution
+              </p>
+            </div>
+
+          </div>
+
+          <button onClick={closeMenu}>
+            <X />
           </button>
 
         </div>
 
-      </div>
-
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="md:hidden bg-green-800 px-6 py-4 space-y-3">
+        <div className="p-4 space-y-2">
 
           <Link
             to="/"
-            className="block"
-            onClick={() => setMenuOpen(false)}
+            onClick={closeMenu}
+            className="flex items-center gap-3 p-3 rounded-xl hover:bg-green-50"
           >
-            🏠 Home
+            <Home size={20} />
+            Home
           </Link>
 
           <Link
             to="/departments"
-            className="block"
-            onClick={() => setMenuOpen(false)}
+            onClick={closeMenu}
+            className="flex items-center gap-3 p-3 rounded-xl hover:bg-green-50"
           >
-            🏛️ Departments
+            <Building2 size={20} />
+            Departments
           </Link>
 
           <Link
             to="/search"
-            className="block"
-            onClick={() => setMenuOpen(false)}
+            onClick={closeMenu}
+            className="flex items-center gap-3 p-3 rounded-xl hover:bg-green-50"
           >
-            🔍 Search
+            <Search size={20} />
+            Search
           </Link>
 
           <Link
             to="/about"
-            className="block"
-            onClick={() => setMenuOpen(false)}
+            onClick={closeMenu}
+            className="flex items-center gap-3 p-3 rounded-xl hover:bg-green-50"
           >
-            ℹ️ About
+            <Info size={20} />
+            About
           </Link>
 
         </div>
-      )}
-    </header>
+      </div>
+    </>
   );
 }
 

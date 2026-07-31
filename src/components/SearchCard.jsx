@@ -18,9 +18,16 @@ function SearchCard({ gr, onOpenSummary, onAskAI }) {
 
       </div>
 
-      <p className="mt-4 text-gray-700">
-        {gr.summary}
-      </p>
+      <p
+  className="mt-4 text-gray-700 overflow-hidden"
+  style={{
+    display: "-webkit-box",
+    WebkitLineClamp: 2,
+    WebkitBoxOrient: "vertical",
+  }}
+>
+  {gr.summary}
+</p>
 
       <div className="mt-5 flex gap-3 flex-wrap">
 

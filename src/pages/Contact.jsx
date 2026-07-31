@@ -49,7 +49,7 @@ function Contact() {
       <div className="max-w-3xl mx-auto bg-white shadow-md rounded-2xl p-6 md:p-10">
 
         <h1 className="text-3xl font-bold text-green-700 mb-3">
-          Contact & Feedback
+          📞 Contact & Feedback
         </h1>
 
         <p className="text-gray-600 mb-8">
@@ -64,13 +64,15 @@ function Contact() {
           </h2>
 
           <p className="text-gray-700">
-            <strong>Founder & Developer:</strong> Chandrakant Madhukar Rathod
+            <strong>Developed by:</strong> Chandrakant Madhukar Rathod
           </p>
 
           <p className="text-gray-700 mt-2">
             <strong>Email:</strong> govmitraai@gmail.com
           </p>
-
+<p className="text-gray-700 mt-2">
+  <strong>Website:</strong> www.gov-mitra.com
+</p>
           <p className="text-gray-700 mt-2">
             <strong>Contact:</strong> 9834839716
           </p>
