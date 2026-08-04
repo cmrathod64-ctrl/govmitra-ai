@@ -36,11 +36,14 @@ function Home() {
 
       {/* Departments */}
       <section className="max-w-6xl mx-auto px-4 py-10">
-        <h2 className="text-3xl font-bold mb-6">
-          Departments
-        </h2>
+        <div className="mb-8 flex items-center justify-between">
+  <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+    Departments
+  </h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+  </div>
+
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-3 xl:grid-cols-4">
           {departments.map((department) => (
             <DepartmentCard
               key={department.id}
@@ -53,9 +56,9 @@ function Home() {
       </section>
 
       {/* Recently Added Government Resolutions */}
-      <section className="max-w-6xl mx-auto px-4 py-10">
+      <section className="max-w-7xl mx-auto px-6 py-16 bg-slate-50 rounded-3xl">
         <h2 className="text-3xl font-bold mb-6 text-green-700">
-          🆕 Recently Added Government Resolutions
+         Latest Government Resolutions
         </h2>
 
         <div className="grid md:grid-cols-2 gap-6">
@@ -90,18 +93,18 @@ function Home() {
       </section>
 
       {/* Latest Government Resolutions */}
-      <section className="max-w-6xl mx-auto px-4 py-10">
-        <h2 className="text-3xl font-bold mb-6 text-green-700">
-          📅 Latest Government Resolutions
-        </h2>
+      <section className="max-w-7xl mx-auto px-6 py-12">
+        <h2 className="mb-8 text-3xl font-bold text-slate-900">
+  Recently Added Government Resolutions
+</h2>
 
         <div className="grid md:grid-cols-2 gap-6">
           {latestGRs.map((gr) => (
             <div
               key={gr.id}
-              className="bg-white rounded-xl shadow-lg p-5 hover:shadow-2xl transition"
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
-              <h3 className="text-xl font-bold mb-2">
+              <h3 className="mb-4 line-clamp-2 text-lg font-bold text-slate-800">
                 {gr.title}
               </h3>
 
@@ -117,7 +120,7 @@ function Home() {
                 href={gr.pdf_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block mt-4 bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800"
+                className="mt-5 inline-flex items-center rounded-xl bg-emerald-600 px-5 py-2 font-medium text-white transition hover:bg-emerald-700"
               >
                 📄 Read GR
               </a>
@@ -127,16 +130,16 @@ function Home() {
       </section>
 
       {/* Why GovMitra AI */}
-      <section className="max-w-6xl mx-auto px-4 py-12">
-        <h2 className="text-3xl font-bold text-center text-green-700 mb-10">
+      <section className="max-w-7xl mx-auto px-6 py-16">
+        <h2 className="mb-12 text-center text-4xl font-bold text-slate-900">
           ⭐ Why GovMitra AI?
         </h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition">
-            <div className="text-5xl mb-4">⚡</div>
+          <div className="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-emerald-500 hover:shadow-2xl">
+            <div className="mb-6 text-6xl transition-transform duration-300 group-hover:scale-110">⚡</div>
 
-            <h3 className="text-xl font-bold mb-2">
+            <h3 className="mb-3 text-xl font-bold text-slate-800">
               Instant Search
             </h3>
 
@@ -145,8 +148,8 @@ function Home() {
             </p>
           </div>
 
-          <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition">
-            <div className="text-5xl mb-4">🤖</div>
+          <div className="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-emerald-500 hover:shadow-2xl">
+            <div className="mb-6 text-6xl transition-transform duration-300 group-hover:scale-110">🤖</div>
 
             <h3 className="text-xl font-bold mb-2">
               AI Summary
@@ -157,8 +160,8 @@ function Home() {
             </p>
           </div>
 
-          <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition">
-            <div className="text-5xl mb-4">📄</div>
+          <div className="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-emerald-500 hover:shadow-2xl">
+            <div className="mb-6 text-6xl transition-transform duration-300 group-hover:scale-110">📄</div>
 
             <h3 className="text-xl font-bold mb-2">
               Official PDFs
@@ -169,8 +172,8 @@ function Home() {
             </p>
           </div>
 
-          <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition">
-            <div className="text-5xl mb-4">🏛️</div>
+          <div className="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-emerald-500 hover:shadow-2xl">
+            <div className="mb-6 text-6xl transition-transform duration-300 group-hover:scale-110">🏛️</div>
 
             <h3 className="text-xl font-bold mb-2">
               Smart Search

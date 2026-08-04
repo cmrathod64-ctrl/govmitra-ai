@@ -2,11 +2,13 @@
 function Footer() {
  
   return (
-        <footer className="bg-slate-900 text-white mt-16">
+        <footer className="relative overflow-hidden bg-slate-900 text-white mt-16">
+<div className="absolute -top-32 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-emerald-500/10 blur-3xl"></div>
 
-      <div className="max-w-7xl mx-auto px-6 py-10 text-center">
+<div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-cyan-500/5 blur-3xl"></div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-10 text-center">
 
-        <h2 className="text-3xl font-bold text-green-400">
+        <h2 className="text-3xl font-bold text-green-400 drop-shadow-[0_0_15px_rgba(34,197,94,0.7)]">
           🤖 GovMitra AI
         </h2>
 
@@ -17,7 +19,7 @@ function Footer() {
         <p className="mt-2 text-gray-400">
           Making Government Resolutions Smarter, Faster & Simpler.
         </p>
-<div className="mt-6 bg-slate-800 rounded-xl p-4 text-sm text-gray-300">
+<div className="mt-6 rounded-xl border border-emerald-500/20 bg-slate-800 p-4 text-sm text-gray-300 shadow-[0_0_40px_rgba(34,197,94,0.08)]">
   <p className="font-semibold text-yellow-300">
     ⚠️ Disclaimer
   </p>
