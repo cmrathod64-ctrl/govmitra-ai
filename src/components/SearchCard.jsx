@@ -1,3 +1,10 @@
+import {
+  FileText,
+  Building2,
+  Bot,
+  MessageCircle,
+} from "lucide-react";
+
 function SearchCard({ gr, onOpenSummary, onAskAI }) {
   return (
     <div className="group rounded-3xl border border-slate-200 bg-gradient-to-br from-white via-slate-50 to-slate-100 p-6 shadow-lg shadow-slate-900/10 transition-all duration-300 hover:-translate-y-2 hover:scale-[1.01] hover:border-emerald-500 hover:shadow-[0_0_35px_rgba(16,185,129,0.18)]">
@@ -35,31 +42,43 @@ function SearchCard({ gr, onOpenSummary, onAskAI }) {
           href={gr.pdf}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-xl bg-emerald-600 px-5 h-11 px-5 font-medium text-white transition-all duration-300 hover:bg-emerald-700 hover:shadow-[0_0_20px_rgba(16,185,129,0.45)]"
+          className="inline-flex h-11 items-center justify-center rounded-xl bg-emerald-600 px-5 font-medium text-white transition-all duration-300 hover:bg-emerald-700 hover:shadow-[0_0_20px_rgba(16,185,129,0.45)]"
         >
-          📄 Open PDF
+          <>
+  <FileText size={18} className="mr-2" />
+  Open PDF
+</>
         </a>
 {gr.official_source_url && (
   <a
     href={gr.official_source_url}
     target="_blank"
     rel="noopener noreferrer"
-    className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-lg"
+    className="inline-flex h-11 items-center justify-center rounded-xl bg-amber-600 px-5 font-medium text-white transition-all duration-300 hover:bg-amber-700"
   >
-    🏛️ Official Source
+    <>
+  <Building2 size={18} className="mr-2" />
+  Official Source
+</>
   </a>
 )}
         <button
           onClick={() => onOpenSummary(gr)}
-          className="rounded-xl bg-sky-600 px-5 h-11 px-5 font-medium text-white transition-all duration-300 hover:bg-sky-700"
+          className="inline-flex h-11 items-center justify-center rounded-xl bg-sky-600 px-5 font-medium text-white transition-all duration-300 hover:bg-sky-700"
         >
-          🤖 AI Summary
+         <>
+  <Bot size={18} className="mr-2" />
+  AI Summary
+</>
         </button>
 <button
   onClick={() => onAskAI(gr)}
-  className="rounded-xl bg-violet-600 px-5 h-11 px-5 font-medium text-white transition-all duration-300 hover:bg-violet-700"
+  className="inline-flex h-11 items-center justify-center rounded-xl bg-violet-600 px-5 font-medium text-white transition-all duration-300 hover:bg-violet-700"
 >
-  💬 Ask AI
+  <>
+  <MessageCircle size={18} className="mr-2" />
+  Ask AI
+</>
 </button>
       </div>
 

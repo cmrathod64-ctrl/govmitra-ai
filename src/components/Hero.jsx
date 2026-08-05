@@ -5,40 +5,59 @@ export default function Hero() {
   const navigate = useNavigate();
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-r from-slate-950 via-slate-900 to-emerald-950 text-white">
+    <section className="relative overflow-hidden bg-gradient-to-r from-slate-100 via-slate-200 to-sky-100 text-slate-900">
       <div
-        className="absolute inset-0 bg-right bg-no-repeat bg-contain opacity-90"
+        className="absolute inset-0 bg-right bg-no-repeat bg-cover opacity-100"
         style={{ backgroundImage: "url('/images/hero-building.png')" }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-white/70 via-white/70 to-transparent" />
 
       <div className="relative z-10 mx-auto flex min-h-[88vh] max-w-7xl items-center px-6 py-20">
         <div className="max-w-2xl">
-          <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-sm text-emerald-300">
-            AI Powered Government Platform
-          </span>
+          <div className="mb-5">
+  <div className="inline-flex rounded-3xl border border-white/30 bg-white/15 p-4 backdrop-blur-md shadow-lg">
+    <img
+      src="/logo.png"
+      alt="GovMitra AI Logo"
+      className="h-45 w-auto opacity-85"
+    />
+  </div>
 
-          <h1 className="mt-6 text-6xl font-black lg:text-7xl">
+  <div className="mt-4">
+    <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-sm text-emerald-700">
+      AI Powered Government Platform
+    </span>
+  </div>
+</div>
+
+          <h1 className="mt-6 text-6xl font-black text-slate-900 lg:text-7xl">
             GovMitra <span className="text-emerald-400">AI</span>
           </h1>
 
-          <h2 className="mt-4 text-2xl font-semibold text-emerald-300">
+          <h2 className="mt-4 text-2xl font-semibold text-emerald-600">
             AI Powered Government Resolution Assistant
           </h2>
 
-          <p className="mt-6 text-lg text-slate-300">
+          <p className="mt-6 text-lg text-slate-700">
             Search Government Resolutions instantly, read AI summaries and access official Government Orders in one place.
           </p>
 
-          <div className="mt-8 flex max-w-3xl rounded-2xl bg-white p-2 shadow-xl">
-            <input className="flex-1 rounded-xl px-4 py-3 text-slate-800 outline-none" placeholder="GR क्रमांक, विषय, विभाग शोधा..." />
-            <button onClick={() => navigate('/search')} className="rounded-xl bg-emerald-600 px-8 py-3 font-semibold text-white hover:bg-emerald-700">
-              <Search className="mr-2 inline" size={18} />
-              Search
-            </button>
-          </div>
+          <div className="mt-8">
+  <button
+    onClick={() => navigate("/search")}
+    className="inline-flex h-14 items-center justify-center rounded-2xl bg-emerald-600 px-10 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:scale-[1.02] hover:bg-emerald-700 hover:shadow-[0_0_25px_rgba(16,185,129,0.35)]"
+  >
+    <Search size={20} className="mr-2" />
+    Search Government Resolutions
+  </button>
+
+  <p className="mt-3 text-sm text-slate-600">
+    Search by GR Number, Subject, Department and Keywords
+  </p>
+</div>
         </div>
       </div>
+      <div className="absolute bottom-0 left-0 h-15 w-full bg-gradient-to-b from-transparent to-slate-50"></div>
     </section>
   );
 }

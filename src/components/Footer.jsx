@@ -1,91 +1,56 @@
- import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 function Footer() {
- 
   return (
-        <footer className="relative overflow-hidden bg-slate-900 text-white mt-16">
-<div className="absolute -top-32 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-emerald-500/10 blur-3xl"></div>
+    <footer className="relative mt-20 overflow-hidden border-t border-slate-200 bg-slate-100 text-slate-800">
+      <div className="absolute -top-32 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-emerald-500/10 blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-sky-400/10 blur-3xl"></div>
 
-<div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-cyan-500/5 blur-3xl"></div>
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-10 text-center">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 py-10 text-center">
+        <h2 className="text-3xl font-bold text-emerald-600">🤖 GovMitra AI</h2>
 
-        <h2 className="text-3xl font-bold text-green-400 drop-shadow-[0_0_15px_rgba(34,197,94,0.7)]">
-          🤖 GovMitra AI
-        </h2>
-
-        <p className="mt-3 text-gray-300 text-lg">
-         AI Powered Maharashtra Government Resolution Search Platform
+        <p className="mt-3 text-lg text-slate-600">
+          AI Powered Maharashtra Government Resolution Search Platform
         </p>
 
-        <p className="mt-2 text-gray-400">
+        <p className="mt-2 text-slate-500">
           Making Government Resolutions Smarter, Faster & Simpler.
         </p>
-<div className="mt-6 rounded-xl border border-emerald-500/20 bg-slate-800 p-4 text-sm text-gray-300 shadow-[0_0_40px_rgba(34,197,94,0.08)]">
-  <p className="font-semibold text-yellow-300">
-    ⚠️ Disclaimer
-  </p>
 
-  <p className="mt-2">
-    GovMitra AI is an independent informational platform and is not an
-    official website of the Government of Maharashtra or any government
-    department.
-  </p>
+        <div className="mt-6 rounded-xl border border-slate-300 bg-white p-4 text-sm text-slate-600 shadow-lg">
+          <p className="font-semibold text-amber-600">⚠️ Disclaimer</p>
 
-  <p className="mt-2">
-    AI-generated summaries and answers are provided for informational
-    purposes only. Users should always refer to the original Government
-    Resolution (GR) and official government sources for authoritative
-    information.
-  </p>
-</div>
-        <div className="border-t border-gray-700 my-8"></div>
+          <p className="mt-2">
+            GovMitra AI is an independent informational platform and is not an official website of the Government of Maharashtra or any government department.
+          </p>
 
-        <p className="text-gray-300 font-semibold">
-         Developed by
-        </p>
+          <p className="mt-2">
+            AI-generated summaries and answers are provided for informational purposes only. Users should always refer to the original Government Resolution (GR) and official government sources for authoritative information.
+          </p>
+        </div>
 
-        <h3 className="text-xl font-bold text-white mt-2">
+        <div className="my-8 border-t border-slate-300"></div>
+
+        <p className="font-semibold text-slate-600">Developed by</p>
+
+        <h3 className="mt-2 text-xl font-bold text-slate-900">
           Chandrakant Madhukar Rathod
         </h3>
-        <p className="text-green-400 mt-2">
-  🌐 www.gov-mitra.com
-</p>
-<div className="mt-6">
-  <Link
-    to="/privacy-policy"
-    className="text-green-400 hover:text-green-300 underline"
-  >
-   🔒 Privacy Policy
-  </Link><span className="mx-3 text-gray-500">|</span>
 
-<Link
-  to="/terms"
-  className="text-green-400 hover:text-green-300 underline"
->
- 📜 Terms
-</Link>
-<span className="mx-3 text-gray-500">|</span>
+        <p className="mt-2 text-emerald-600">🌐 www.gov-mitra.com</p>
 
-<Link
-  to="/contact"
-  className="text-green-400 hover:text-green-300 underline"
->
-  📞 Contact
-</Link>
-</div>
-        <p className="mt-5 text-gray-500 text-sm">
-          © 2026 GovMitra AI. All Rights Reserved.
-        </p>
+        <div className="mt-6">
+          <Link to="/privacy-policy" className="text-emerald-600 underline hover:text-emerald-700">🔒 Privacy Policy</Link>
+          <span className="mx-3 text-slate-400">|</span>
+          <Link to="/terms" className="text-emerald-600 underline hover:text-emerald-700">📜 Terms</Link>
+          <span className="mx-3 text-slate-400">|</span>
+          <Link to="/contact" className="text-emerald-600 underline hover:text-emerald-700">📞 Contact</Link>
+        </div>
 
-        <p className="mt-2 text-gray-500 text-sm">
-  Made with ❤️ in India 🇮🇳
-</p>
-
-<p className="text-gray-500 text-xs mt-1">
-  Version 1.0.0
-</p>
-
+        <p className="mt-5 text-sm text-slate-500">© 2026 GovMitra AI. All Rights Reserved.</p>
+        <p className="mt-2 text-sm text-slate-500">Made with ❤️ in India 🇮🇳</p>
+        <p className="mt-1 text-xs text-slate-500">Version 1.0.0</p>
       </div>
-
     </footer>
   );
 }
