@@ -5,6 +5,7 @@ import AISummaryModal from "../components/AISummaryModal";
 import AskAIModal from "../components/AskAIModal";
 import { useSearchParams } from "react-router-dom";
 import { supabase } from "../lib/supabase";
+
 function Search() {
 const [grs, setGrs] = useState([]);
 const [loading, setLoading] = useState(true);
@@ -130,10 +131,13 @@ const sortedGRs = [...filteredGRs].sort((a, b) => {
 });
   return (
     <>
-      <div className="max-w-6xl mx-auto px-4 py-8 md:px-8">
+      <div className="max-w-7xl mx-auto px-6 py-10 md:px-8">
 
-        <h1 className="text-4xl font-bold text-green-700 mb-6">
-          🔍 Search Government Resolutions
+        <h1 className="mb-3 text-4xl font-extrabold text-slate-900">
+          Search Government Resolutions
+          <p className="mb-8 text-lg text-slate-600">
+  Search Government Resolutions by title, department, keyword or year.
+</p>
         </h1>
                         <SearchFilters
   search={search}
@@ -151,13 +155,13 @@ const sortedGRs = [...filteredGRs].sort((a, b) => {
    {hasFilters && (
 <div className="mt-6 mb-6 flex items-center justify-between">
 
-  <span className="bg-green-100 text-green-700 px-4 py-2 rounded-full font-semibold">
+  <span className="rounded-full bg-emerald-100 px-5 py-2 font-semibold text-emerald-700 shadow-sm">
     📄 Total Results : {filteredGRs.length}
   </span>
 
   <button
     onClick={handleResetFilters}
-    className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg"
+    className="rounded-xl bg-red-500 px-5 py-2 font-medium text-white transition hover:bg-red-600 hover:shadow-lg"
   >
     🔄 Reset Filters
   </button>
@@ -167,12 +171,12 @@ const sortedGRs = [...filteredGRs].sort((a, b) => {
         <div className="space-y-4">
      {!hasFilters ? (
 
-  <div className="bg-white rounded-xl shadow-lg p-10 text-center">
-    <h2 className="text-3xl font-bold text-green-700">
+  <div className="rounded-3xl border border-slate-200 bg-gradient-to-br from-white via-slate-50 to-slate-100 p-14 text-center shadow-xl shadow-slate-900/10">
+    <h2 className="text-4xl font-extrabold text-emerald-600">
       🔍 Start Searching
     </h2>
 
-    <p className="mt-4 text-gray-600">
+    <p className="mt-5 text-lg leading-8 text-slate-600">
       Search by keyword, department or year.
       <br />
       Results will appear here.

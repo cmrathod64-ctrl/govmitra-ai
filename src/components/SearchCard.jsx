@@ -1,25 +1,25 @@
 function SearchCard({ gr, onOpenSummary, onAskAI }) {
   return (
-    <div className="bg-white shadow-lg rounded-xl p-5 border">
+    <div className="group rounded-3xl border border-slate-200 bg-gradient-to-br from-white via-slate-50 to-slate-100 p-6 shadow-lg shadow-slate-900/10 transition-all duration-300 hover:-translate-y-2 hover:scale-[1.01] hover:border-emerald-500 hover:shadow-[0_0_35px_rgba(16,185,129,0.18)]">
 
-      <h2 className="text-2xl font-bold">
+      <h2 className="text-2xl font-bold text-slate-900 transition-colors duration-300 group-hover:text-emerald-700">
         {gr.title}
       </h2>
 
       <div className="flex gap-2 mt-3 flex-wrap">
 
-        <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
+        <span className="rounded-full bg-emerald-100 px-4 py-1.5 text-sm font-medium text-emerald-700">
           🏛️ {gr.department}
         </span>
 
-        <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">
+        <span className="rounded-full bg-sky-100 px-4 py-1.5 text-sm font-medium text-sky-700">
           📅 {gr.date}
         </span>
 
       </div>
 
       <p
-  className="mt-4 text-gray-700 overflow-hidden"
+  className="mt-5 overflow-hidden text-slate-600 leading-7"
   style={{
     display: "-webkit-box",
     WebkitLineClamp: 2,
@@ -29,13 +29,13 @@ function SearchCard({ gr, onOpenSummary, onAskAI }) {
   {gr.summary}
 </p>
 
-      <div className="mt-5 flex gap-3 flex-wrap">
+      <div className="mt-6 flex flex-wrap items-center gap-3">
 
         <a
           href={gr.pdf}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-lg"
+          className="rounded-xl bg-emerald-600 px-5 h-11 px-5 font-medium text-white transition-all duration-300 hover:bg-emerald-700 hover:shadow-[0_0_20px_rgba(16,185,129,0.45)]"
         >
           📄 Open PDF
         </a>
@@ -51,13 +51,13 @@ function SearchCard({ gr, onOpenSummary, onAskAI }) {
 )}
         <button
           onClick={() => onOpenSummary(gr)}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg"
+          className="rounded-xl bg-sky-600 px-5 h-11 px-5 font-medium text-white transition-all duration-300 hover:bg-sky-700"
         >
           🤖 AI Summary
         </button>
 <button
   onClick={() => onAskAI(gr)}
-  className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg"
+  className="rounded-xl bg-violet-600 px-5 h-11 px-5 font-medium text-white transition-all duration-300 hover:bg-violet-700"
 >
   💬 Ask AI
 </button>
