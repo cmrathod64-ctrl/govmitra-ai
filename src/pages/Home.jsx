@@ -35,7 +35,7 @@ function Home() {
       <Hero />
 
       {/* Departments */}
-      <section className="max-w-6xl mx-auto px-4 py-10">
+      <section className="max-w-7xl mx-auto px-6 py-16">
         <div className="mb-8 flex items-center justify-between">
   <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
     Departments
@@ -58,16 +58,16 @@ function Home() {
       {/* Recently Added Government Resolutions */}
       <section className="max-w-7xl mx-auto px-6 py-16 bg-slate-50 rounded-3xl">
         <h2 className="text-3xl font-bold mb-6 text-green-700">
-         Latest Government Resolutions
+                   Latest Government Resolutions
         </h2>
 
         <div className="grid md:grid-cols-2 gap-6">
           {recentGRs.map((gr) => (
             <div
               key={gr.id}
-              className="bg-white rounded-xl shadow-lg p-5 hover:shadow-2xl transition"
+              className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-emerald-500 hover:shadow-[0_0_35px_rgba(16,185,129,0.18)]"
             >
-              <h3 className="text-xl font-bold mb-2">
+              <h3 className="mb-4 line-clamp-2 text-lg font-bold text-slate-800 transition-colors duration-300 group-hover:text-emerald-700">
                 {gr.title}
               </h3>
 
@@ -83,7 +83,7 @@ function Home() {
                 href={gr.pdf_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block mt-4 bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800"
+                className="mt-5 inline-flex items-center rounded-xl bg-emerald-600 px-5 py-2 font-medium text-white transition-all duration-300 hover:bg-emerald-700 hover:shadow-[0_0_20px_rgba(16,185,129,0.45)]"
               >
                 📄 Read GR
               </a>
@@ -92,7 +92,7 @@ function Home() {
         </div>
       </section>
 
-      {/* Latest Government Resolutions */}
+      {/* Recently Added Government Resolutions */}
       <section className="max-w-7xl mx-auto px-6 py-12">
         <h2 className="mb-8 text-3xl font-bold text-slate-900">
   Recently Added Government Resolutions
@@ -102,9 +102,9 @@ function Home() {
           {latestGRs.map((gr) => (
             <div
               key={gr.id}
-              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+             className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-emerald-500 hover:shadow-[0_0_35px_rgba(16,185,129,0.18)]"
             >
-              <h3 className="mb-4 line-clamp-2 text-lg font-bold text-slate-800">
+              <h3 className="mb-4 line-clamp-2 text-lg font-bold text-slate-800 transition-colors duration-300 group-hover:text-emerald-700">
                 {gr.title}
               </h3>
 
@@ -120,7 +120,7 @@ function Home() {
                 href={gr.pdf_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-5 inline-flex items-center rounded-xl bg-emerald-600 px-5 py-2 font-medium text-white transition hover:bg-emerald-700"
+                className="mt-5 inline-flex items-center rounded-xl bg-emerald-600 px-5 py-2 font-medium text-white transition-all duration-300 hover:bg-emerald-700 hover:shadow-[0_0_20px_rgba(16,185,129,0.45)]"
               >
                 📄 Read GR
               </a>

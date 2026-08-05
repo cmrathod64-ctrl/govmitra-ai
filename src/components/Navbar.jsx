@@ -129,7 +129,7 @@ function Navbar() {
 
             <img
               src="/logo.png?v=2"
-              className="w-10 h-10"
+              className="h-30 w-30 rounded-lg object-contain"
             />
 
             <div>
