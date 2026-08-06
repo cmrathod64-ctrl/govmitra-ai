@@ -18,7 +18,7 @@ function Navbar() {
     <>
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b shadow-sm">
 
-        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 h-14 md:h-16 flex items-center justify-between">
 
           {/* Left */}
           <div className="flex items-center gap-3">
@@ -27,18 +27,18 @@ function Navbar() {
               onClick={() => setMenuOpen(true)}
               className="md:hidden"
             >
-              <Menu size={28} />
+              <Menu size={24} />
             </button>
 
             <Link to="/" className="flex items-center gap-2">
               <img
                 src="/logo.png?v=2"
                 alt="GovMitra AI"
-               className="w-12 h-12 rounded-lg"
+               className="w-10 h-10 md:w-12 md:h-12 rounded-lg"
               />
 
               <div>
-                <h1 className="text-lg md:text-2xl font-bold text-green-700">
+                <h1 className="text-base md:text-2xl font-bold text-green-700">
                   GovMitra AI
                 </h1>
 
@@ -94,7 +94,7 @@ function Navbar() {
             to="/search"
             className="md:hidden text-green-700"
           >
-            <Search size={24} />
+            <Search size={22} />
           </Link>
 
           <div className="hidden lg:block">
@@ -119,7 +119,7 @@ function Navbar() {
       {/* Side Menu */}
 
       <div
-        className={`fixed top-0 left-0 h-full w-72 bg-white z-50 shadow-xl transform transition-transform duration-300 ${
+        className={`fixed top-0 left-0 h-full w-64 sm:w-72 bg-white z-50 shadow-xl transform transition-transform duration-300 ${
           menuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -129,7 +129,7 @@ function Navbar() {
 
             <img
               src="/logo.png?v=2"
-              className="h-30 w-30 rounded-lg object-contain"
+              className="h-20 w-20 rounded-lg object-contain"
             />
 
             <div>

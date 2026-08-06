@@ -131,11 +131,11 @@ const sortedGRs = [...filteredGRs].sort((a, b) => {
 });
   return (
     <>
-      <div className="max-w-7xl mx-auto px-6 py-10 md:px-8">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 py-8 md:py-10">
 
-        <h1 className="mb-3 text-4xl font-extrabold text-slate-900">
+        <h1 className="mb-3 text-3xl md:text-3xl md:text-3xl md:text-4xl font-extrabold text-slate-900">
           Search Government Resolutions
-          <p className="mb-8 text-lg text-slate-600">
+          <p className="mb-8 text-base md:text-base md:text-lg text-slate-600">
   Search Government Resolutions by title, department, keyword or year.
 </p>
         </h1>
@@ -153,7 +153,7 @@ const sortedGRs = [...filteredGRs].sort((a, b) => {
 />
 
    {hasFilters && (
-<div className="mt-6 mb-6 flex items-center justify-between">
+<div className="mt-6 mb-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
 
   <span className="rounded-full bg-emerald-100 px-5 py-2 font-semibold text-emerald-700 shadow-sm">
     📄 Total Results : {filteredGRs.length}
@@ -171,12 +171,12 @@ const sortedGRs = [...filteredGRs].sort((a, b) => {
         <div className="space-y-4">
      {!hasFilters ? (
 
-  <div className="rounded-3xl border border-slate-200 bg-gradient-to-br from-white via-slate-50 to-slate-100 p-14 text-center shadow-xl shadow-slate-900/10">
-    <h2 className="text-4xl font-extrabold text-emerald-600">
+  <div className="rounded-3xl border border-slate-200 bg-gradient-to-br from-white via-slate-50 to-slate-100 p-8 md:p-14 text-center shadow-xl shadow-slate-900/10">
+    <h2 className="text-3xl md:text-3xl md:text-3xl md:text-4xl font-extrabold text-emerald-600">
       🔍 Start Searching
     </h2>
 
-    <p className="mt-5 text-lg leading-8 text-slate-600">
+    <p className="mt-5 text-base md:text-lg leading-8 text-slate-600">
       Search by keyword, department or year.
       <br />
       Results will appear here.
