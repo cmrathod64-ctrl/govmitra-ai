@@ -15,44 +15,48 @@ import Admin from "./pages/Admin";
 import AdminLogin from "./pages/AdminLogin";
 import ProtectedRoute from "./components/ProtectedRoute";
 
+import ScrollToTop from "./components/ScrollToTop";
+
 function App() {
   return (
-    <Routes>
+    <>
+      <ScrollToTop />
 
-      {/* Public Layout */}
-      <Route element={<MainLayout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/departments" element={<Departments />} />
+      <Routes>
+        {/* Public Layout */}
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/departments" element={<Departments />} />
+          <Route
+            path="/departments/:name"
+            element={<DepartmentDetails />}
+          />
+          <Route path="/search" element={<Search />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route
+            path="/privacy-policy"
+            element={<PrivacyPolicy />}
+          />
+          <Route path="/terms" element={<Terms />} />
+        </Route>
+
+        {/* Admin */}
         <Route
-          path="/departments/:name"
-          element={<DepartmentDetails />}
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <Admin />
+            </ProtectedRoute>
+          }
         />
-        <Route path="/search" element={<Search />} />
-        <Route path="/contact" element={<Contact />} />
+
         <Route
-          path="/privacy-policy"
-          element={<PrivacyPolicy />}
+          path="/admin-login"
+          element={<AdminLogin />}
         />
-        <Route path="/terms" element={<Terms />} />
-      </Route>
-
-      {/* Admin */}
-      <Route
-        path="/admin"
-        element={
-          <ProtectedRoute>
-            <Admin />
-          </ProtectedRoute>
-        }
-      />
-
-      <Route
-        path="/admin-login"
-        element={<AdminLogin />}
-      />
-
-    </Routes>
+      </Routes>
+    </>
   );
 }
 
