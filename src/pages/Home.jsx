@@ -35,15 +35,15 @@ function Home() {
       <Hero />
 
       {/* Departments */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
+      <section className="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16">
         <div className="mb-8 flex items-center justify-between">
-  <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+  <h2 className="text-2xl md:text-4xl font-bold text-slate-900">
     Departments
   </h2>
 
   </div>
 
-        <div className="grid grid-cols-2 gap-6 md:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-2 gap-4 md:gap-6 md:grid-cols-3 xl:grid-cols-4">
           {departments.map((department) => (
             <DepartmentCard
               key={department.id}
@@ -56,8 +56,8 @@ function Home() {
       </section>
 
       {/* Recently Added Government Resolutions */}
-      <section className="max-w-7xl mx-auto px-6 py-16 bg-slate-50 rounded-3xl">
-        <h2 className="text-3xl font-bold mb-6 text-green-700">
+      <section className="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16 bg-slate-50 rounded-3xl">
+        <h2 className="text-2xl md:text-3xl font-bold mb-6 text-green-700">
                    Latest Government Resolutions
         </h2>
 
@@ -83,7 +83,7 @@ function Home() {
                 href={gr.pdf_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-5 inline-flex items-center rounded-xl bg-emerald-600 px-5 py-2 font-medium text-white transition-all duration-300 hover:bg-emerald-700 hover:shadow-[0_0_20px_rgba(16,185,129,0.45)]"
+                className="mt-5 inline-flex items-center rounded-xl bg-emerald-600 px-4 md:px-4 md:px-5 py-2 font-medium text-white transition-all duration-300 hover:bg-emerald-700 hover:shadow-[0_0_20px_rgba(16,185,129,0.45)]"
               >
                 📄 Read GR
               </a>
@@ -93,7 +93,7 @@ function Home() {
       </section>
 
       {/* Recently Added Government Resolutions */}
-      <section className="max-w-7xl mx-auto px-6 py-12">
+      <section className="max-w-7xl mx-auto px-4 md:px-6 py-12">
         <h2 className="mb-8 text-3xl font-bold text-slate-900">
   Recently Added Government Resolutions
 </h2>
@@ -131,13 +131,13 @@ function Home() {
 
       {/* Why GovMitra AI */}
       <section className="max-w-7xl mx-auto px-6 py-16">
-        <h2 className="mb-12 text-center text-4xl font-bold text-slate-900">
+        <h2 className="mb-12 text-center text-3xl md:text-4xl font-bold text-slate-900">
           ⭐ Why GovMitra AI?
         </h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-emerald-500 hover:shadow-2xl">
-            <div className="mb-6 text-6xl transition-transform duration-300 group-hover:scale-110">⚡</div>
+          <div className="group rounded-3xl border border-slate-200 bg-white p-6 md:p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-emerald-500 hover:shadow-2xl">
+            <div className="mb-6 text-5xl md:text-6xl transition-transform duration-300 group-hover:scale-110">⚡</div>
 
             <h3 className="mb-3 text-xl font-bold text-slate-800">
               Instant Search
