@@ -50,11 +50,7 @@ export default function Hero() {
     <Search size={20} className="mr-2" />
     Search Government Resolutions
   </button>
-
-  <p className="mt-3 text-sm text-slate-600">
-    Search by GR Number, Subject, Department and Keywords
-  </p>
-</div>
+  </div>
         </div>
       </div>
       <div className="absolute bottom-0 left-0 h-15 w-full bg-gradient-to-b from-transparent to-slate-50"></div>
