@@ -31,11 +31,11 @@ function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-100">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-emerald-50/30">
       <Hero />
 
       {/* Departments */}
-      <section className="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16">
+      <section className="relative max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16">
         <div className="mb-8 flex items-center justify-between">
   <h2 className="text-2xl md:text-4xl font-bold text-slate-900">
     Departments
@@ -93,7 +93,7 @@ function Home() {
       </section>
 
       {/* Recently Added Government Resolutions */}
-      <section className="max-w-7xl mx-auto px-4 md:px-6 py-12">
+      <section className="max-w-7xl mx-auto px-4 md:px-6 py-12 rounded-3xl bg-slate-50/70">
         <h2 className="mb-8 text-3xl font-bold text-slate-900">
   Recently Added Government Resolutions
 </h2>
@@ -130,7 +130,7 @@ function Home() {
       </section>
 
       {/* Why GovMitra AI */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
+      <section className="max-w-7xl mx-auto px-6 py-16 rounded-3xl bg-slate-50/70 backdrop-blur-sm">
         <h2 className="mb-12 text-center text-3xl md:text-4xl font-bold text-slate-900">
           ⭐ Why GovMitra AI?
         </h2>
