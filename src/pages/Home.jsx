@@ -62,7 +62,7 @@ function Home() {
         </h2>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {recentGRs.map((gr) => (
+          {latestGRs.map((gr) => (
             <div
               key={gr.id}
               className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-emerald-500 hover:shadow-[0_0_35px_rgba(16,185,129,0.18)]"
@@ -94,12 +94,12 @@ function Home() {
 
       {/* Recently Added Government Resolutions */}
       <section className="max-w-7xl mx-auto px-4 md:px-6 py-12 rounded-3xl bg-slate-50/70">
-        <h2 className="mb-8 text-3xl font-bold text-slate-900">
+        <h2 className="text-2xl md:text-3xl font-bold mb-6 text-green-700">
   Recently Added Government Resolutions
 </h2>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {latestGRs.map((gr) => (
+          {recentGRs.map((gr) => (
             <div
               key={gr.id}
              className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-emerald-500 hover:shadow-[0_0_35px_rgba(16,185,129,0.18)]"
