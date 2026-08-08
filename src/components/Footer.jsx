@@ -31,13 +31,7 @@ function Footer() {
 
         <div className="my-8 border-t border-slate-300"></div>
 
-        <p className="font-semibold text-slate-600">Developed by</p>
-
-        <h3 className="mt-2 text-lg md:text-xl font-bold text-slate-900">
-          Chandrakant Madhukar Rathod
-        </h3>
-
-        <p className="mt-2 text-emerald-600">🌐 www.gov-mitra.com</p>
+                <p className="mt-2 text-emerald-600">🌐 www.gov-mitra.com</p>
 
         <div className="mt-6 flex flex-wrap justify-center gap-3">
           <Link to="/privacy-policy" className="text-emerald-600 underline hover:text-emerald-700">🔒 Privacy Policy</Link>
