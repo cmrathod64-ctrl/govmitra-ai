@@ -37,11 +37,10 @@ function Home() {
       {/* Departments */}
       <section className="relative max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16">
         <div className="mb-8 flex items-center justify-between">
-  <h2 className="text-2xl md:text-4xl font-bold text-slate-900">
-    Departments
-  </h2>
-
-  </div>
+          <h2 className="text-2xl md:text-4xl font-bold text-green-900">
+            शासकीय विभाग
+          </h2>
+        </div>
 
         <div className="grid grid-cols-2 gap-4 md:gap-6 md:grid-cols-3 xl:grid-cols-4">
           {departments.map((department) => (
@@ -55,10 +54,10 @@ function Home() {
         </div>
       </section>
 
-      {/* Recently Added Government Resolutions */}
+      {/* Latest Government Resolutions */}
       <section className="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16 bg-slate-50 rounded-3xl">
         <h2 className="text-2xl md:text-3xl font-bold mb-6 text-green-700">
-                   Latest Government Resolutions
+          नवीन शासन निर्णय
         </h2>
 
         <div className="grid md:grid-cols-2 gap-6">
@@ -85,7 +84,7 @@ function Home() {
                 rel="noopener noreferrer"
                 className="mt-5 inline-flex items-center rounded-xl bg-emerald-600 px-4 md:px-4 md:px-5 py-2 font-medium text-white transition-all duration-300 hover:bg-emerald-700 hover:shadow-[0_0_20px_rgba(16,185,129,0.45)]"
               >
-                📄 Read GR
+                📄 GR पहा
               </a>
             </div>
           ))}
@@ -95,14 +94,14 @@ function Home() {
       {/* Recently Added Government Resolutions */}
       <section className="max-w-7xl mx-auto px-4 md:px-6 py-12 rounded-3xl bg-slate-50/70">
         <h2 className="text-2xl md:text-3xl font-bold mb-6 text-green-700">
-  Recently Added Government Resolutions
-</h2>
+          अलीकडे जोडलेले शासन निर्णय
+        </h2>
 
         <div className="grid md:grid-cols-2 gap-6">
           {recentGRs.map((gr) => (
             <div
               key={gr.id}
-             className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-emerald-500 hover:shadow-[0_0_35px_rgba(16,185,129,0.18)]"
+              className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-emerald-500 hover:shadow-[0_0_35px_rgba(16,185,129,0.18)]"
             >
               <h3 className="mb-4 line-clamp-2 text-lg font-bold text-slate-800 transition-colors duration-300 group-hover:text-emerald-700">
                 {gr.title}
@@ -122,7 +121,7 @@ function Home() {
                 rel="noopener noreferrer"
                 className="mt-5 inline-flex items-center rounded-xl bg-emerald-600 px-5 py-2 font-medium text-white transition-all duration-300 hover:bg-emerald-700 hover:shadow-[0_0_20px_rgba(16,185,129,0.45)]"
               >
-                📄 Read GR
+                📄 GR पहा
               </a>
             </div>
           ))}
@@ -132,55 +131,63 @@ function Home() {
       {/* Why GovMitra AI */}
       <section className="max-w-7xl mx-auto px-6 py-16 rounded-3xl bg-slate-50/70 backdrop-blur-sm">
         <h2 className="mb-12 text-center text-3xl md:text-4xl font-bold text-slate-900">
-          ⭐ Why GovMitra AI?
+          ⭐ GovMitra AI का?
         </h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div className="group rounded-3xl border border-slate-200 bg-white p-6 md:p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-emerald-500 hover:shadow-2xl">
-            <div className="mb-6 text-5xl md:text-6xl transition-transform duration-300 group-hover:scale-110">⚡</div>
+            <div className="mb-6 text-5xl md:text-6xl transition-transform duration-300 group-hover:scale-110">
+              ⚡
+            </div>
 
             <h3 className="mb-3 text-xl font-bold text-slate-800">
-              Instant Search
+              जलद शोध
             </h3>
 
             <p className="text-gray-600">
-              Find Government Resolutions in seconds.
+              शासन निर्णय काही क्षणांत शोधा.
             </p>
           </div>
 
           <div className="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-emerald-500 hover:shadow-2xl">
-            <div className="mb-6 text-6xl transition-transform duration-300 group-hover:scale-110">🤖</div>
+            <div className="mb-6 text-6xl transition-transform duration-300 group-hover:scale-110">
+              🤖
+            </div>
 
             <h3 className="text-xl font-bold mb-2">
-              AI Summary
+              AI सारांश
             </h3>
 
             <p className="text-gray-600">
-              Understand Government Resolutions quickly with AI.
+              AI च्या मदतीने शासन निर्णयांचा आशय सोप्या भाषेत समजून घ्या.
             </p>
           </div>
 
           <div className="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-emerald-500 hover:shadow-2xl">
-            <div className="mb-6 text-6xl transition-transform duration-300 group-hover:scale-110">📄</div>
+            <div className="mb-6 text-6xl transition-transform duration-300 group-hover:scale-110">
+              📄
+            </div>
 
             <h3 className="text-xl font-bold mb-2">
-              Official PDFs
+              अधिकृत PDF
             </h3>
 
             <p className="text-gray-600">
-              Open official Government Resolution PDFs instantly.
+              अधिकृत शासन निर्णयाची PDF त्वरित उघडा.
             </p>
           </div>
 
           <div className="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-emerald-500 hover:shadow-2xl">
-            <div className="mb-6 text-6xl transition-transform duration-300 group-hover:scale-110">🏛️</div>
+            <div className="mb-6 text-6xl transition-transform duration-300 group-hover:scale-110">
+              🏛️
+            </div>
 
             <h3 className="text-xl font-bold mb-2">
-              Smart Search
+              स्मार्ट शोध
             </h3>
 
             <p className="text-gray-600">
-              Search by Department, Title and Keywords.
+              विभाग, शीर्षक आणि Keywords नुसार शोधा.
             </p>
           </div>
         </div>
